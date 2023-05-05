@@ -9,6 +9,7 @@ const Title = styled.h1`
   margin-top: 2rem;
   @media screen and (max-width: 600px) {
     font-size: 1.8rem;
+    margin-top: 1.5rem;
   }
 `;
 const Logo = styled.img`
@@ -18,7 +19,7 @@ const Logo = styled.img`
 
   @media screen and (max-width: 600px) {
     width: 70px;
-    height: 70px;
+    mid-height: 70px;
   }
 `;
 export default function Header() {

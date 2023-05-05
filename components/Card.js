@@ -14,17 +14,20 @@ const CardContainer = styled.div`
   }
 `;
 const Title = styled.h1`
-  font-size: 1.2em;
+  font-size: large;
   margin-bottom: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+
   @media (max-width: 375px) {
     font-size: 1.2rem;
+    word-wrap: break-word;
   }
 `;
 const Summary = styled.p`
-  font-size: 1em;
+  font-size: medium;
   margin-bottom: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  word-wrap: break-word;
 `;
 export default function Card() {
   return (
