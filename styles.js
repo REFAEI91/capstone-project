@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
-import { Goldman } from "@next/font/google";
+import { Kanit } from "@next/font/google";
 
-const goldman = Goldman({
-  weight: "400",
+const kanit = Kanit({
+  weight: "300",
   subsets: ["latin"],
 });
 
@@ -15,8 +15,8 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: ${goldman.style.fontFamily};
     background-color:lightyellow orchid;
-
+    font-family: ${kanit.style.fontFamily};
+  ;
   }
 `;

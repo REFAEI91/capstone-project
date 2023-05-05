@@ -1,43 +1,52 @@
 import { medications } from "@/lib/db";
+import { Goldman } from "@next/font/google";
 import styled from "styled-components";
 
-const CardContainer = styled.div`
-  border: 0px groove #ccc;
+const goldman = Goldman({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const CardContainer = styled.section`
   padding: 1.3em;
   border-radius: 5px;
   margin: 1.5em;
-  flex-direction: column;
-  justify-content: space-between;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   @media (max-width: 375px) {
     margin: 5%;
   }
 `;
-const Title = styled.h1`
-  font-size: large;
+const Title = styled.h2`
+  font-size: 1.1rem;
   margin-bottom: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  font-family: ${goldman.style.fontFamily};
 
   @media (max-width: 375px) {
-    font-size: 1.2rem;
     word-wrap: break-word;
   }
 `;
 const Summary = styled.p`
-  font-size: medium;
+  font-size: 0.9rem;
   margin-bottom: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   word-wrap: break-word;
 `;
+const Ul = styled.ul`
+  list-style: none;
+`;
+
 export default function Card() {
   return (
-    <div>
+    <Ul>
       {medications.map((medication) => (
-        <CardContainer key={medication.id}>
-          <Title>{medication.name}</Title>
-          <Summary>{medication.summury}</Summary>
-        </CardContainer>
+        <li key={medication.id}>
+          <CardContainer>
+            <Title>{medication.name}</Title>
+            <Summary>{medication.summary}</Summary>
+          </CardContainer>
+        </li>
       ))}
-    </div>
+    </Ul>
   );
 }
