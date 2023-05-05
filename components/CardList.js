@@ -11,7 +11,9 @@ export default function CardList() {
   return (
     <List>
       {medications.map((medication) => (
-        <Card key={medication.id} medication={medication} />
+        <li key={medication.id}>
+          <Card medication={medication} />
+        </li>
       ))}
     </List>
   );
