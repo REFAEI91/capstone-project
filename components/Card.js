@@ -1,5 +1,6 @@
 import { Goldman } from "@next/font/google";
 import styled from "styled-components";
+import { useState } from "react";
 
 const goldman = Goldman({
   weight: "400",
@@ -40,12 +41,53 @@ const Button = styled.button`
     background-color: #fff8de;
   }
 `;
+const DetailsList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+const Span = styled.span`
+  font-family: ${goldman.style.fontFamily};
+  font-size: 1rem;
+  background-color: #fff8de;
+`;
 export default function Card({ medication }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
+  };
   return (
     <Container>
       <Title>{medication.name}</Title>
       <Summary>{medication.summary}</Summary>
-      <Button>More Info</Button>
+      <Button onClick={() => handleClick(medication.id)}>
+        {isExpanded ? "Less Info ⌃ " : "More Info ⌵"}
+      </Button>
+      {isExpanded && (
+        <DetailsList>
+          <li>
+            <Span>Mechanism of Action : </Span>
+            <br /> {medication.mechanismOfAction}
+          </li>
+          <li>
+            <Span>Uses : </Span>
+            <br /> {medication.uses}
+          </li>
+          <li>
+            <Span>Side Effects : </Span>
+            <br /> {medication.sideEffects}
+          </li>
+          <li>
+            <Span>Dosage And Administration : </Span>
+            <br />
+            {medication.dosageAndAdministration}
+          </li>
+          <li>
+            <Span>Precautions : </Span> <br />
+            {medication.precautions}
+          </li>
+        </DetailsList>
+      )}
     </Container>
   );
 }
