@@ -31,6 +31,14 @@ const Summary = styled.p`
 const Button = styled.button`
   justify-self: flex-end;
   color: black;
+  padding: 0.3rem;
+  border: 0.1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  &:hover {
+    cursor: pointer;
+    background-color: #fff8de;
+  }
 `;
 export default function Card({ medication }) {
   return (
