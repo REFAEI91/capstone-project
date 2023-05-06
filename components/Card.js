@@ -7,6 +7,7 @@ const goldman = Goldman({
 });
 
 const Container = styled.section`
+  display: grid;
   padding: 1.3em;
   border-radius: 5px;
   margin: 1.5em;
@@ -27,11 +28,16 @@ const Summary = styled.p`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   word-wrap: break-word;
 `;
+const Button = styled.button`
+  justify-self: flex-end;
+  color: black;
+`;
 export default function Card({ medication }) {
   return (
     <Container>
       <Title>{medication.name}</Title>
       <Summary>{medication.summary}</Summary>
+      <Button>More Info</Button>
     </Container>
   );
 }
