@@ -1,6 +1,7 @@
 import { medications } from "@/lib/db";
 import styled from "styled-components";
 import Card from "./Card";
+import { useState } from "react";
 
 const List = styled.ul`
   list-style: none;
@@ -8,10 +9,15 @@ const List = styled.ul`
 `;
 
 export default function CardList() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  console.log(searchQuery);
   return (
     <>
       <section>
-        <input type="text" placeholder="Search" />
+        <input type="text" placeholder="Search" onChange={handleInputChange} />
       </section>
       <List>
         {medications.map((medication) => (
