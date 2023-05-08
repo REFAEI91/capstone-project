@@ -14,17 +14,30 @@ export default function CardList() {
     setSearchQuery(event.target.value);
   };
   console.log(searchQuery);
+  const filteredMedications = medications.filter(
+    (medication) =>
+      medication.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      medication.summary.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  console.log(filteredMedications);
   return (
     <>
       <section>
         <input type="text" placeholder="Search" onChange={handleInputChange} />
       </section>
       <List>
-        {medications.map((medication) => (
-          <li key={medication.id}>
-            <Card medication={medication} />
-          </li>
-        ))}
+        {filteredMedications.length > 0 ? (
+          <>
+            {searchQuery && <p>{filteredMedications.length} results found</p>}
+            {filteredMedications.map((medication) => (
+              <li key={medication.id}>
+                <Card medication={medication} />
+              </li>
+            ))}
+          </>
+        ) : (
+          <p>No results found</p>
+        )}
       </List>
     </>
   );
