@@ -23,12 +23,7 @@ const Title = styled.h2`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   font-family: ${goldman.style.fontFamily};
 `;
-const Summary = styled.p`
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-  word-wrap: break-word;
-`;
+const Summary = styled.p``;
 const Button = styled.button`
   justify-self: flex-end;
   color: black;
