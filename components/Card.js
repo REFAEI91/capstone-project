@@ -23,7 +23,6 @@ const Title = styled.h2`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   font-family: ${goldman.style.fontFamily};
 `;
-const Summary = styled.p``;
 const Button = styled.button`
   justify-self: flex-end;
   color: black;
@@ -54,7 +53,7 @@ export default function Card({ medication }) {
   return (
     <Container>
       <Title>{medication.name}</Title>
-      <Summary>{medication.summary}</Summary>
+      <p>{medication.summary}</p>
       <Button onClick={() => handleClick(medication.id)}>
         {isExpanded ? "Less Info ⌃ " : "More Info ⌵"}
       </Button>
