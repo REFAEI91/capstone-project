@@ -1,10 +1,12 @@
-import Header from "@/components/Header";
 import CardList from "@/components/CardList";
-export default function HomePage() {
+import Head from "next/head";
+export default function HomePage({ toggleBookmark, medicationsList }) {
   return (
     <>
-      <Header />
-      <CardList />
+      <Head>
+        <title>HomePage</title>
+      </Head>
+      <CardList medications={medicationsList} toggleBookmark={toggleBookmark} />
     </>
   );
 }

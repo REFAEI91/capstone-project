@@ -1,6 +1,7 @@
 import { Goldman } from "@next/font/google";
 import styled from "styled-components";
 import { useState } from "react";
+import BookmarkButton from "./BookmarkButton";
 
 const goldman = Goldman({
   weight: "400",
@@ -23,6 +24,7 @@ const Title = styled.h2`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   font-family: ${goldman.style.fontFamily};
 `;
+const Summary = styled.p``;
 const Button = styled.button`
   justify-self: flex-end;
   color: black;
@@ -44,16 +46,20 @@ const Span = styled.span`
   font-size: 1rem;
   background-color: #fff8de;
 `;
-export default function Card({ medication }) {
+
+export default function Card({ medication, toggleBookmark }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
     setIsExpanded(!isExpanded);
   };
+
+  // console.log(medication.isBookmarked);
   return (
     <Container>
+      <BookmarkButton medication={medication} toggleBookmark={toggleBookmark} />
       <Title>{medication.name}</Title>
-      <p>{medication.summary}</p>
+      <Summary>{medication.summary}</Summary>
       <Button onClick={() => handleClick(medication.id)}>
         {isExpanded ? "Less Info ⌃ " : "More Info ⌵"}
       </Button>
