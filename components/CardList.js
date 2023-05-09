@@ -40,7 +40,7 @@ export default function CardList({ medications, toggleBookmark }) {
       medication.summary.toLowerCase().includes(searchQuery.toLowerCase())
   );
   // console.log(filteredMedications);
-  console.log(medications);
+  // console.log(medications);
   return (
     <>
       <SearchBar>
