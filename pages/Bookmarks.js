@@ -1,7 +1,19 @@
 import Card from "@/components/Card";
 import Head from "next/head";
+import styled from "styled-components";
 
 export default function Bookmarks({ toggleBookmark, medicationsList }) {
+  const Results = styled.p`
+    text-align: center;
+    margin: 1em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1.3em;
+    border-radius: 5px;
+    margin: 1.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  `;
   const bookmarkedMedications = medicationsList.filter(
     (medication) => medication.isBookmarked
   );
@@ -11,7 +23,7 @@ export default function Bookmarks({ toggleBookmark, medicationsList }) {
         <title> Bookmarks </title>
       </Head>
       {bookmarkedMedications.length === 0 ? (
-        <p>You don`t have any bookmarked cards yet. </p>
+        <Results>You don`t have any bookmarked cards yet. </Results>
       ) : (
         bookmarkedMedications.map((medication) => (
           <Card
