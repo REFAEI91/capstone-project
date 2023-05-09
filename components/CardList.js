@@ -1,4 +1,3 @@
-import { medications } from "@/lib/db";
 import styled from "styled-components";
 import Card from "./Card";
 import { useState } from "react";
@@ -28,39 +27,47 @@ const Input = styled.input`
 const Results = styled.p`
   text-align: center;
 `;
-export default function CardList() {
+export default function CardList({ medications, toggleBookmark }) {
   const [searchQuery, setSearchQuery] = useState("");
+
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
+  // console.log(searchQuery);
   const filteredMedications = medications.filter(
     (medication) =>
       medication.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       medication.summary.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  // console.log(filteredMedications);
+  console.log(medications);
   return (
     <>
       <SearchBar>
-        <Input type="text" placeholder="Search" onChange={handleInputChange} />
+        <Input
+          htmlfor="search"
+          type="text"
+          value={searchQuery}
+          onChange={handleInputChange}
+          placeholder="Search..."
+        />
       </SearchBar>
-      {filteredMedications.length > 0 ? (
-        <List>
-          {searchQuery && (
-            <Results>
-              {filteredMedications.length === 1
-                ? `1 result found`
-                : `${filteredMedications.length} results found `}
-            </Results>
-          )}
-          {filteredMedications.map((medication) => (
-            <li key={medication.id}>
-              <Card medication={medication} />
-            </li>
-          ))}
-        </List>
-      ) : (
-        <Results>No results found</Results>
-      )}
+      <List>
+        {filteredMedications.length > 0 ? (
+          <>
+            {searchQuery && (
+              <Results>{filteredMedications.length} results found</Results>
+            )}
+            {filteredMedications.map((medication) => (
+              <li key={medication.id}>
+                <Card medication={medication} toggleBookmark={toggleBookmark} />
+              </li>
+            ))}
+          </>
+        ) : (
+          <Results>No results found</Results>
+        )}
+      </List>
     </>
   );
 }
