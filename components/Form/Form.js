@@ -1,4 +1,16 @@
 import { useState } from "react";
+import {
+  Form,
+  Fieldset,
+  Legend,
+  Label,
+  Input,
+  Textarea,
+  Select,
+  Checkbox,
+  FormButton,
+  SomeoneElse,
+} from "./Form.styled";
 export default function Plan() {
   const [plan, setPlan] = useState([]);
   const [forSomeoneElse, setForSomeoneElse] = useState(false);
@@ -25,13 +37,13 @@ export default function Plan() {
   console.log(plan);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend> Medications plan</legend>
+    <Form onSubmit={handleSubmit}>
+      <Fieldset>
+        <Legend> Medications plan</Legend>
         <label htmlFor="for">
           {" "}
           For :
-          <input
+          <Checkbox
             type="radio"
             name="for"
             value="Me"
@@ -39,7 +51,7 @@ export default function Plan() {
           />{" "}
           <span>Me</span>{" "}
         </label>
-        <input
+        <Checkbox
           type="radio"
           name="for"
           defaultValue="Someone else"
@@ -48,61 +60,61 @@ export default function Plan() {
         <span>Someone else</span>
         <br />
         {forSomeoneElse && (
-          <fieldset>
-            <label htmlFor="name">
+          <SomeoneElse>
+            <Label htmlFor="name">
               {" "}
               Name :
-              <input type="text" name="name" />
-            </label>
-            <label htmlFor="age">
+              <Input type="text" name="name" />
+            </Label>
+            <Label htmlFor="age">
               {" "}
               Age :
-              <input type="number" name="age" />
-            </label>
-            <label htmlFor="gender">
+              <Input type="number" name="age" />
+            </Label>
+            <Label htmlFor="gender">
               {" "}
               Gender :
-              <select name="gender">
+              <Select name="gender">
                 <option defaultValue="Male">Male</option>
                 <option defaultValue="Female">Female</option>
                 <option defaultValue="Other">Other</option>
-              </select>
-            </label>
-          </fieldset>
+              </Select>
+            </Label>
+          </SomeoneElse>
         )}
-        <label htmlFor="importance">
+        <Label htmlFor="importance">
           {" "}
           Importance :
-          <select name="importance">
+          <Select name="importance">
             <option defaultValue="High">High</option>
             <option defaultValue="Medium">Medium</option>
             <option defaultValue="Low">Low</option>
-          </select>
-        </label>
-        <label htmlFor="medication_name">
+          </Select>
+        </Label>
+        <Label htmlFor="medication_name">
           {" "}
           Medication Name :
-          <input type="text" name="medication_name" />
-        </label>
-        <label htmlFor="activ_ingredients">
+          <Input type="text" name="medication_name" />
+        </Label>
+        <Label htmlFor="activ_ingredients">
           {" "}
           Activ Ingredients :
-          <input type="text" name="activ_ingredients" />
-        </label>
-        <label htmlFor="dosage">
+          <Input type="text" name="activ_ingredients" />
+        </Label>
+        <Label htmlFor="dosage">
           {" "}
           Dosage :
-          <input type="text" name="dosage" />
-        </label>
-        <label htmlFor="reason">
+          <Input type="text" name="dosage" />
+        </Label>
+        <Label htmlFor="reason">
           {" "}
           Reason for taking:
-          <input type="text" name="reason" />
-        </label>
-        <label htmlFor="form">
+          <Input type="text" name="reason" />
+        </Label>
+        <Label htmlFor="form">
           {" "}
           Form :
-          <select name="form">
+          <Select name="form">
             <option defaultValue="Tablet">Tablet</option>
             <option defaultValue="Capsule">Capsule</option>
             <option defaultValue="Syrup">Syrup</option>
@@ -114,18 +126,18 @@ export default function Plan() {
             <option defaultValue="Drops">Drops</option>
             <option defaultValue="Spray">Spray</option>
             <option defaultValue="Other">Other</option>
-          </select>
-        </label>
-        <fieldset>
-          <label htmlFor="frequency">
+          </Select>
+        </Label>
+        <SomeoneElse>
+          <Label htmlFor="frequency">
             {" "}
             Frequency :
-            <select name="frequencyType">
+            <Select name="frequencyType">
               <option defaultValue="Daily">Daily</option>
               <option defaultValue="Weekly">Weekly</option>
               <option defaultValue="Monthly">Monthly</option>
-            </select>
-            <select name="frequencyTimes">
+            </Select>
+            <Select name="frequencyTimes">
               <option defaultValue="Once">Once</option>
               <option defaultValue="Twice">Twice</option>
               <option defaultValue="Thrice">Thrice</option>
@@ -133,29 +145,33 @@ export default function Plan() {
               <option defaultValue="Five times">Five times</option>
               <option defaultValue="Six times">Six times</option>
               <option defaultValue="More">More</option>
-            </select>
-          </label>
-          <input type="checkbox" name="frequencyMornings" value="Mornings" />
+            </Select>
+          </Label>
+          <Checkbox type="checkbox" name="frequencyMornings" value="Mornings" />
           Mornings
-          <input type="checkbox" name="frequencyAfternoon" value="Afternoon" />
+          <Checkbox
+            type="checkbox"
+            name="frequencyAfternoon"
+            value="Afternoon"
+          />
           Afternoon
-          <input type="checkbox" name="frequencyEvening" value="Evening" />
+          <Checkbox type="checkbox" name="frequencyEvening" value="Evening" />
           Evening
-          <input type="checkbox" name="frequencyBedtime" value="Bedtime" />
+          <Checkbox type="checkbox" name="frequencyBedtime" value="Bedtime" />
           Bedtime
-        </fieldset>
-        <label htmlFor="instractions">
+        </SomeoneElse>
+        <Label htmlFor="instractions">
           {" "}
           Instructions :
-          <textarea type="text" name="instractions" />
-        </label>
-        <label htmlFor="refill">
+          <Textarea type="text" name="instractions" />
+        </Label>
+        <Label htmlFor="refill">
           {" "}
           Refill :
-          <input type="date" name="refill" />
-        </label>
-        <button type="submit">Submit</button>
-      </fieldset>
-    </form>
+          <Input type="date" name="refill" />
+        </Label>
+        <FormButton type="submit">Submit</FormButton>
+      </Fieldset>
+    </Form>
   );
 }
