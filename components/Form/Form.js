@@ -34,9 +34,6 @@ export default function Plan() {
     };
     setPlan((prevPlan) => [...prevPlan, plan]);
   };
-
-  console.log(plan);
-
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -77,9 +74,9 @@ export default function Plan() {
                 {" "}
                 Gender :
                 <Select name="gender">
-                  <option defaultValue="Male">Male</option>
-                  <option defaultValue="Female">Female</option>
-                  <option defaultValue="Other">Other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </Select>
               </Label>
             </SomeoneElse>
@@ -106,7 +103,13 @@ export default function Plan() {
           <Label htmlFor="dosage">
             {" "}
             Dosage :
-            <Input type="text" name="dosage" />
+            <Input
+              type="number"
+              name="dosage"
+              id="dosage"
+              min="0"
+              step="0.01"
+            />
           </Label>
           <Label htmlFor="reason">
             {" "}
