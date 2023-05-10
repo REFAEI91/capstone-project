@@ -1,37 +1,75 @@
+import { useState } from "react";
 export default function Plan() {
+  const [plan, setPlan] = useState([]);
+  const [forSomeoneElse, setForSomeoneElse] = useState(false);
+  const handleForChange = (event) => {
+    setForSomeoneElse(event.target.value === "Someone else");
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const frequency = [];
+    for (let [key, value] of formData.entries()) {
+      if (key.startsWith("frequency")) {
+        frequency.push(value);
+      }
+    }
+    const plan = {
+      ...Object.fromEntries(formData.entries()),
+      frequency,
+    };
+    setPlan((prevPlan) => [...prevPlan, plan]);
+  };
+
+  console.log(plan);
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <legend> Medications plan</legend>
         <label htmlFor="for">
           {" "}
           For :
-          <input type="radio" name="for" value="Me" /> <span>Me</span>{" "}
+          <input
+            type="radio"
+            name="for"
+            value="Me"
+            onChange={handleForChange}
+          />{" "}
+          <span>Me</span>{" "}
         </label>
-        <input type="radio" name="for" defaultValue="Someone else" />{" "}
+        <input
+          type="radio"
+          name="for"
+          defaultValue="Someone else"
+          onChange={handleForChange}
+        />{" "}
         <span>Someone else</span>
         <br />
-        <fieldset>
-          <label htmlFor="name">
-            {" "}
-            Name :
-            <input type="text" name="name" />
-          </label>
-          <label htmlFor="age">
-            {" "}
-            Age :
-            <input type="number" name="age" />
-          </label>
-          <label htmlFor="gender">
-            {" "}
-            Gender :
-            <select name="gender">
-              <option defaultValue="Male">Male</option>
-              <option defaultValue="Female">Female</option>
-              <option defaultValue="Other">Other</option>
-            </select>
-          </label>
-        </fieldset>
+        {forSomeoneElse && (
+          <fieldset>
+            <label htmlFor="name">
+              {" "}
+              Name :
+              <input type="text" name="name" />
+            </label>
+            <label htmlFor="age">
+              {" "}
+              Age :
+              <input type="number" name="age" />
+            </label>
+            <label htmlFor="gender">
+              {" "}
+              Gender :
+              <select name="gender">
+                <option defaultValue="Male">Male</option>
+                <option defaultValue="Female">Female</option>
+                <option defaultValue="Other">Other</option>
+              </select>
+            </label>
+          </fieldset>
+        )}
         <label htmlFor="importance">
           {" "}
           Importance :
