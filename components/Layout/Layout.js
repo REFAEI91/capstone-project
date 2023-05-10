@@ -14,6 +14,9 @@ export default function Layout({ children }) {
         <Link href="/Bookmarks">
           <Image src="/bookmark.svg" width={35} height={35} alt="bookmark" />
         </Link>
+        <Link href="/plan">
+          <Image src="/plan.svg" width={35} height={35} alt="bookmark" />
+        </Link>
       </NavBar>
     </>
   );
