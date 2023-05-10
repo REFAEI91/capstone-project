@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import { useState } from "react";
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/Layout";
 import { medications } from "@/lib/db";
 
 export default function App({ Component, pageProps }) {

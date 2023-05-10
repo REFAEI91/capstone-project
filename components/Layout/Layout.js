@@ -1,17 +1,8 @@
 import Link from "next/link";
-import Header from "./Header";
+import Header from "../Header/Header";
 import Image from "next/image";
-import styled from "styled-components";
+import { NavBar } from "../Layout/Layout.styled";
 export default function Layout({ children }) {
-  const NavBar = styled.nav`
-    position: fixed;
-    bottom: 1rem;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 0 1rem;
-    background-color: transparent;
-  `;
   return (
     <>
       <Header />
