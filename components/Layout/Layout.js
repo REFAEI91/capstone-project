@@ -8,15 +8,15 @@ export default function Layout({ children }) {
       <Header />
       {children}
       <NavBar>
-        <StyledLink href="/">
+        <Link href="/">
           <Image src="/home.svg" width={35} height={35} alt="home" />
-        </StyledLink>
-        <StyledLink href="/Bookmarks">
+        </Link>
+        <Link href="/Bookmarks">
           <Image src="/bookmark.svg" width={35} height={35} alt="bookmark" />
-        </StyledLink>
-        <StyledLink href="/plan">
+        </Link>
+        <Link href="/plan">
           <Image src="/plan.svg" width={35} height={35} alt="bookmark" />
-        </StyledLink>
+        </Link>
       </NavBar>
     </>
   );
