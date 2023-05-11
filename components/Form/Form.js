@@ -14,29 +14,12 @@ import {
   SomeoneElse,
 } from "./Form.styled";
 import PlanList from "../PlanList/PlanList";
-export default function Plan() {
-  const [medicationPlan, setMedicationPlan] = useState([]);
-  const [forSomeoneElse, setForSomeoneElse] = useState(false);
-  const handleForChange = (event) => {
-    setForSomeoneElse(event.target.value === "Someone else");
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const frequency = [];
-    for (let [key, value] of formData.entries()) {
-      if (key.startsWith("frequency")) {
-        frequency.push(value);
-      }
-    }
-    const plan = {
-      ...Object.fromEntries(formData.entries()),
-      frequency,
-    };
-    setMedicationPlan((prevPlan) => [...prevPlan, plan]);
-  };
-  console.log(medicationPlan);
+export default function Plan({
+  medicationPlan,
+  forSomeoneElse,
+  handleForChange,
+  handleSubmit,
+}) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -145,7 +128,6 @@ export default function Plan() {
           <FormButton type="submit">Submit</FormButton>
         </Fieldset>
       </Form>
-      <PlanList plans={medicationPlan} />
     </>
   );
 }
