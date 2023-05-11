@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/components/Card/Card";
 import Head from "next/head";
 import styled from "styled-components";
 

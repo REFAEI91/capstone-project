@@ -11,7 +11,6 @@ export default createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
-  
   }
 
   body {
@@ -21,6 +20,6 @@ export default createGlobalStyle`
     margin: 0;
     background-color:lightyellow orchid;
     font-family: ${kanit.style.fontFamily};
-  ;
+    padding-bottom: 2.5rem;
   }
 `;

@@ -1,4 +1,4 @@
-import CardList from "@/components/CardList";
+import CardList from "@/components/CardList/CardList";
 import Head from "next/head";
 export default function HomePage({ toggleBookmark, medicationsList }) {
   return (
