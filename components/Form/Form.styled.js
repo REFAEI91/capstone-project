@@ -25,13 +25,12 @@ export const Legend = styled.legend`
   display: flex;
   justify-content: center;
   font-size: 1.3rem;
-  margin-top: 0.2rem;
   font-family: ${goldman.style.fontFamily};
 `;
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
+  margin: 0.5rem;
 `;
 
 export const Input = styled.input`
@@ -39,7 +38,7 @@ export const Input = styled.input`
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  transition: width 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 100%;
   margin: 0 auto;
 `;
