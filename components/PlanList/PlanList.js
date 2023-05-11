@@ -1,5 +1,4 @@
 export default function PlanList({ plans }) {
-  console.log(plans);
   return (
     <>
       {plans.map((plan, index) => (

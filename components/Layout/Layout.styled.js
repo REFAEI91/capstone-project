@@ -6,5 +6,8 @@ export const NavBar = styled.nav`
   justify-content: space-evenly;
   width: 100%;
   padding: 0 1rem;
-  background-color: transparent;
+`;
+export const StyledLink = styled.a`
+  text-decoration: none;
+  background-color: gray;
 `;

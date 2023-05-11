@@ -2,18 +2,20 @@ import { useState } from "react";
 import {
   Form,
   Fieldset,
+  ForFieldset,
   Legend,
   Label,
   Input,
   Textarea,
   Select,
+  Radio,
   Checkbox,
   FormButton,
   SomeoneElse,
 } from "./Form.styled";
 import PlanList from "../PlanList/PlanList";
 export default function Plan() {
-  const [plan, setPlan] = useState([]);
+  const [medicationPlan, setMedicationPlan] = useState([]);
   const [forSomeoneElse, setForSomeoneElse] = useState(false);
   const handleForChange = (event) => {
     setForSomeoneElse(event.target.value === "Someone else");
@@ -32,124 +34,90 @@ export default function Plan() {
       ...Object.fromEntries(formData.entries()),
       frequency,
     };
-    setPlan((prevPlan) => [...prevPlan, plan]);
+    setMedicationPlan((prevPlan) => [...prevPlan, plan]);
   };
   return (
     <>
       <Form onSubmit={handleSubmit}>
         <Fieldset>
-          <Legend> Medications plan</Legend>
-          <label htmlFor="for">
-            {" "}
-            For :
-            <Checkbox
+          <Legend> Medication plan</Legend>
+          <ForFieldset>
+            <legend>For :</legend>
+            <Radio
+              id="me"
               type="radio"
               name="for"
               value="Me"
               onChange={handleForChange}
-            />{" "}
-            <span>Me</span>{" "}
-          </label>
-          <Checkbox
-            type="radio"
-            name="for"
-            defaultValue="Someone else"
-            onChange={handleForChange}
-          />{" "}
-          <span>Someone else</span>
-          <br />
+            />
+            <label htmlFor="me">Me</label>
+            <Radio
+              id="someoneElse"
+              type="radio"
+              name="for"
+              defaultValue="Someone else"
+              onChange={handleForChange}
+            />
+            <label htmlFor="someoneElse">Someone else</label>
+          </ForFieldset>
           {forSomeoneElse && (
             <SomeoneElse>
-              <Label htmlFor="name">
-                {" "}
-                Name :
-                <Input type="text" name="name" />
-              </Label>
-              <Label htmlFor="age">
-                {" "}
-                Age :
-                <Input type="number" name="age" />
-              </Label>
-              <Label htmlFor="gender">
-                {" "}
-                Gender :
-                <Select name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </Select>
-              </Label>
+              <Label htmlFor="name">Name : </Label>
+              <Input type="text" name="name" />
+              <Label htmlFor="age">Age : </Label>
+              <Input type="number" name="age" />
+              <Label htmlFor="gender">Gender : </Label>
+              <Select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </Select>
             </SomeoneElse>
           )}
-          <Label htmlFor="importance">
-            {" "}
-            Importance :
-            <Select name="importance">
-              <option defaultValue="High">High</option>
-              <option defaultValue="Medium">Medium</option>
-              <option defaultValue="Low">Low</option>
-            </Select>
-          </Label>
-          <Label htmlFor="medication_name">
-            {" "}
-            Medication Name :
-            <Input type="text" name="medication_name" />
-          </Label>
-          <Label htmlFor="activ_ingredients">
-            {" "}
-            Activ Ingredients :
-            <Input type="text" name="activ_ingredients" />
-          </Label>
-          <Label htmlFor="dosage">
-            {" "}
-            Dosage :
-            <Input
-              type="number"
-              name="dosage"
-              id="dosage"
-              min="0"
-              step="0.01"
-            />
-          </Label>
-          <Label htmlFor="reason">
-            {" "}
-            Reason for taking:
-            <Input type="text" name="reason" />
-          </Label>
-          <Label htmlFor="form">
-            {" "}
-            Form :
-            <Select name="form">
-              <option defaultValue="Tablet">Tablet</option>
-              <option defaultValue="Capsule">Capsule</option>
-              <option defaultValue="Syrup">Syrup</option>
-              <option defaultValue="Injection">Injection</option>
-              <option defaultValue="Powder">Powder</option>
-              <option defaultValue="Ointment">Ointment</option>
-              <option defaultValue="Syringe">Syringe</option>
-              <option defaultValue="Cream">Cream</option>
-              <option defaultValue="Drops">Drops</option>
-              <option defaultValue="Spray">Spray</option>
-              <option defaultValue="Other">Other</option>
-            </Select>
-          </Label>
+          <Label htmlFor="importance">Importance : </Label>
+          <Select name="importance">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </Select>
+          <Label htmlFor="medication_name">Medication Name : </Label>
+          <Input type="text" name="medication_name" />
+          <Label htmlFor="activ_ingredients">Active Ingredients :</Label>
+          <Input type="text" name="active_ingredients" />
+          <Label htmlFor="dosage">Dosage :</Label>
+          <Input type="number" name="dosage" id="dosage" min="0" step="0.01" />
+          <Label htmlFor="reason">Reason for taking: </Label>
+          <Input type="text" name="reason" />
+          <Label htmlFor="medicationForm">Medication Form : </Label>
+          <Select name="medicationForm">
+            <option value="Tablet">Tablet</option>
+            <option value="Capsule">Capsule</option>
+            <option value="Syrup">Syrup</option>
+            <option value="Injection">Injection</option>
+            <option value="Powder">Powder</option>
+            <option value="Ointment">Ointment</option>
+            <option value="Syringe">Syringe</option>
+            <option value="Cream">Cream</option>
+            <option value="Drops">Drops</option>
+            <option value="Spray">Spray</option>
+            <option value="Other">Other</option>
+          </Select>
           <SomeoneElse>
             <Label htmlFor="frequency">
-              {" "}
               Frequency :
               <Select name="frequencyType">
-                <option defaultValue="Daily">Daily</option>
-                <option defaultValue="Weekly">Weekly</option>
-                <option defaultValue="Monthly">Monthly</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
               </Select>
               <Select name="frequencyTimes">
-                <option defaultValue="Once">Once</option>
-                <option defaultValue="Twice">Twice</option>
-                <option defaultValue="Thrice">Thrice</option>
-                <option defaultValue="Four times">Four times</option>
-                <option defaultValue="Five times">Five times</option>
-                <option defaultValue="Six times">Six times</option>
-                <option defaultValue="More">More</option>
+                <option value="Once">Once</option>
+                <option value="Twice">Twice</option>
+                <option value="Thrice">Thrice</option>
+                <option value="Four times">Four times</option>
+                <option value="Five times">Five times</option>
+                <option value="Six times">Six times</option>
+                <option value="More">More</option>
               </Select>
             </Label>
             <Checkbox
@@ -169,20 +137,14 @@ export default function Plan() {
             <Checkbox type="checkbox" name="frequencyBedtime" value="Bedtime" />
             Bedtime
           </SomeoneElse>
-          <Label htmlFor="instractions">
-            {" "}
-            Instructions :
-            <Textarea type="text" name="instractions" />
-          </Label>
-          <Label htmlFor="refill">
-            {" "}
-            Refill :
-            <Input type="date" name="refill" />
-          </Label>
+          <Label htmlFor="instractions">Instructions : </Label>
+          <Textarea type="text" name="instractions" />
+          <Label htmlFor="refill">Refill :</Label>
+          <Input type="date" name="refill" />
           <FormButton type="submit">Submit</FormButton>
         </Fieldset>
       </Form>
-      <PlanList plans={plan} />
+      <PlanList plans={medicationPlan} />
     </>
   );
 }

@@ -19,6 +19,9 @@ export const Fieldset = styled.fieldset`
 export const SomeoneElse = styled.fieldset`
   border: none;
 `;
+export const ForFieldset = styled.fieldset`
+  border: none;
+`;
 export const Legend = styled.legend`
   display: flex;
   justify-content: center;
@@ -33,11 +36,13 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  margin-top: 0.5em;
-  padding: 0.5em;
-  border-radius: 5px;
+  padding: 0.5rem;
   border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  transition: width 0.3s ease-in-out;
+  width: 100%;
+  margin: 0 auto;
 `;
 export const Textarea = styled.textarea`
   margin-top: 0.5em;
@@ -55,6 +60,9 @@ export const Select = styled.select`
 `;
 
 export const Checkbox = styled.input`
+  margin-right: 0.5em;
+`;
+export const Radio = styled.input`
   margin-right: 0.5em;
 `;
 export const FormButton = styled.button`
