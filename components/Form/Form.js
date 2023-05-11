@@ -36,6 +36,7 @@ export default function Plan() {
     };
     setMedicationPlan((prevPlan) => [...prevPlan, plan]);
   };
+  console.log(medicationPlan);
   return (
     <>
       <Form onSubmit={handleSubmit}>

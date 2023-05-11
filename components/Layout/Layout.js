@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "../Header/Header";
 import Image from "next/image";
-import { NavBar, StyledLink } from "../Layout/Layout.styled";
+import { NavBar } from "../Layout/Layout.styled";
 export default function Layout({ children }) {
   return (
     <>

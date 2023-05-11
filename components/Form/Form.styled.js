@@ -7,7 +7,6 @@ const goldman = Goldman({
 
 export const Form = styled.form`
   display: grid;
-  margin-bottom: 3rem;
 `;
 export const Fieldset = styled.fieldset`
   padding: 1.3em;
@@ -49,6 +48,7 @@ export const Textarea = styled.textarea`
   padding: 0.5em;
   border-radius: 5px;
   border: none;
+  width: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 export const Select = styled.select`
