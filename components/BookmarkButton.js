@@ -7,19 +7,24 @@ export default function BookmarkButton({ toggleBookmark, medication }) {
     justify-self: flex-end;
     border: none;
     background-color: transparent;
-    .bookmarked {
-      background-color: goldenrod;
-    }
   `;
   return (
     <Button onClick={() => toggleBookmark(medication.id)}>
-      <Image
-        src="/bookmark.svg"
-        width={23}
-        height={23}
-        alt="bookmark"
-        className={medication.isBookmarked ? "bookmarked" : ""}
-      />
+      {medication.isBookmarked ? (
+        <Image
+          src={"/redBookmark.svg"}
+          alt="bookmarked"
+          width={25}
+          height={25}
+        ></Image>
+      ) : (
+        <Image
+          src={"/bookmark.svg"}
+          alt="not bookmarked"
+          width={25}
+          height={25}
+        ></Image>
+      )}
     </Button>
   );
 }
