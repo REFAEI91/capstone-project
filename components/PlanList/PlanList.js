@@ -1,4 +1,4 @@
-import { List } from "./PlanList.styled";
+import { List, Title, Heading, Span } from "./PlanList.styled";
 import { useState } from "react";
 
 export default function PlanList({ plans }) {
@@ -15,16 +15,12 @@ export default function PlanList({ plans }) {
     // Toggle showAllPlans state when heading is clicked
     setShowMyPlans(!showMyPlans);
   };
-
-  console.log(myPlans);
   return (
     <>
-      <h2>My Medications Plan</h2>
-      <span onClick={handleShowMyPlans}>
-        {" "}
-        {showMyPlans ? "Hide Plans" : "Show Plans"}{" "}
-      </span>
-      ({myPlans.length})
+      <Title>My Medications Plan</Title>
+      <Span onClick={handleShowMyPlans}>
+        {showMyPlans ? "Hide Plans" : "Show Plans"} ({myPlans.length}) :
+      </Span>
       {myPlans.length > 0 && showMyPlans && (
         <>
           {myPlans.map((plan, index) => (
@@ -49,7 +45,7 @@ export default function PlanList({ plans }) {
       )}
       {otherPlans.length > 0 && (
         <>
-          <h2>Others Plans</h2>
+          <Title>Others Plans</Title>
           {Object.values(
             otherPlans.reduce((groupedPlans, plan) => {
               const key = `${plan.name}-${plan.gender}-${plan.age}`;
@@ -66,14 +62,13 @@ export default function PlanList({ plans }) {
             }, {})
           ).map((group, index) => (
             <div key={index}>
-              <h3>
+              <Heading>
                 {group.name} ({group.gender}, {group.age})
-              </h3>
-              <span onClick={() => handleShowPlan(index)}>
-                {" "}
-                {showPlan === index ? "Hide Plans" : "Show Plans"}{" "}
-              </span>
-              ({group.medications.length})
+              </Heading>
+              <Span onClick={() => handleShowPlan(index)}>
+                {showPlan === index ? "Hide Plans" : "Show Plans"} (
+                {group.medications.length}) :
+              </Span>
               {showPlan === index &&
                 group.medications.map((plan, index) => (
                   <List key={index} importance={plan.importance}>
@@ -82,9 +77,9 @@ export default function PlanList({ plans }) {
                     <li>Dosage : {plan.dosage}</li>
                     <li>
                       Frequency : {plan.frequencyType} , {plan.frequencyTimes} ,
-                      ({plan.frequencyMornings ? "Mornings  " : " , "}
-                      {plan.frequencyAfternoon ? "Afternoon  " : " , "}
-                      {plan.frequencyEvening ? "Evenings  " : " , "}
+                      ({plan.frequencyMornings ? "Mornings  " : "   "}
+                      {plan.frequencyAfternoon ? "Afternoon  " : "   "}
+                      {plan.frequencyEvening ? "Evenings  " : "   "}
                       {plan.frequencyBedTime ? "Bed Time  " : " "})
                     </li>
                     <li>Form : {plan.medicationForm}</li>

@@ -13,9 +13,7 @@ import {
   FormButton,
   SomeoneElse,
 } from "./Form.styled";
-import PlanList from "../PlanList/PlanList";
 export default function Plan({
-  medicationPlan,
   forSomeoneElse,
   handleForChange,
   handleSubmit,

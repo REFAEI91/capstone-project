@@ -12,3 +12,20 @@ export const List = styled.ul`
       ? "#e0EFB5"
       : "#EAFBEA"};
 `;
+export const Title = styled.h2`
+  font-size: 1.25rem;
+  border-radius: 5px;
+  display: grid;
+  justify-content: center;
+`;
+export const Span = styled.span`
+  border: 1px groove #e0efb5;
+  background-color: #e0efb5;
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 0.2rem;
+`;
+export const Heading = styled.h3`
+  font-size: 1.25rem;
+  margin: 1rem;
+`;
