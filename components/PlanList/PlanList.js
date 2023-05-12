@@ -4,17 +4,15 @@ import { useState } from "react";
 export default function PlanList({ plans }) {
   const myPlans = plans.filter((plan) => plan.for === "Me");
   const otherPlans = plans.filter((plan) => plan.for !== "Me");
-  const [activePlanIndex, setActivePlanIndex] = useState(null);
+  const [activePlanKey, setActivePlanKey] = useState(null);
   const [showMyPlans, setShowMyPlans] = useState(false); // Initialize state as false
-  const handleactivePlanIndex = (index) => {
-    setActivePlanIndex(activePlanIndex === index ? null : index);
+  const handleActivePlanKey = (key) => {
+    setActivePlanKey(activePlanKey === key ? null : key);
   };
-
   const handleShowMyPlans = () => {
     // Toggle showAllPlans state when heading is clicked
     setShowMyPlans(!showMyPlans);
   };
-  console.log(plans);
   return (
     <>
       <Title>My Medications Plan</Title>
@@ -61,16 +59,16 @@ export default function PlanList({ plans }) {
               groupedPlans[key].medications.push(plan);
               return groupedPlans;
             }, {})
-          ).map((group, index) => (
+          ).map((group) => (
             <div key={group.key}>
               <Heading>
                 {group.name} ({group.gender}, {group.age})
               </Heading>
-              <Span onClick={() => handleactivePlanIndex(index)}>
-                {activePlanIndex === index ? "Hide Plans" : "Show Plans"} (
+              <Span onClick={() => handleActivePlanKey(group.key)}>
+                {activePlanKey === group.key ? "Hide Plans" : "Show Plans"} (
                 {group.medications.length}) :
               </Span>
-              {activePlanIndex === index &&
+              {activePlanKey === group.key &&
                 group.medications.map((plan) => (
                   <List key={plan.id} importance={plan.importance}>
                     <li>Medication Name : {plan.medication_name}</li>
