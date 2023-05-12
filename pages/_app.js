@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import { useState } from "react";
 import Layout from "@/components/Layout/Layout";
 import { medications } from "@/lib/db";
+import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
   const [medicationsList, setMedicationsList] = useState(medications);
@@ -11,18 +12,20 @@ export default function App({ Component, pageProps }) {
     setForSomeoneElse(event.target.value === "Someone else");
   };
 
-  const handleSubmit = (event) => {
+  const handleAddMedicationPlanSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const frequency = [];
+    let frequency = {};
     for (let [key, value] of formData.entries()) {
       if (key.startsWith("frequency")) {
-        frequency.push(value);
+        const field = key.split("frequency")[1];
+        frequency[field] = value;
       }
     }
     const plan = {
       ...Object.fromEntries(formData.entries()),
       frequency,
+      id: uid(),
     };
     setMedicationPlan((prevPlan) => [...prevPlan, plan]);
   };
@@ -48,7 +51,7 @@ export default function App({ Component, pageProps }) {
         medicationPlan={medicationPlan}
         forSomeoneElse={forSomeoneElse}
         handleForChange={handleForChange}
-        handleSubmit={handleSubmit}
+        handleSubmit={handleAddMedicationPlanSubmit}
       />
     </Layout>
   );

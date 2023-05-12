@@ -9,22 +9,16 @@ export default function BookmarkButton({ toggleBookmark, medication }) {
     background-color: transparent;
   `;
   return (
-    <Button onClick={() => toggleBookmark(medication.id)}>
-      {medication.isBookmarked ? (
-        <Image
-          src={"/redBookmark.svg"}
-          alt="bookmarked"
-          width={25}
-          height={25}
-        ></Image>
-      ) : (
-        <Image
-          src={"/bookmark.svg"}
-          alt="not bookmarked"
-          width={25}
-          height={25}
-        ></Image>
-      )}
+    <Button
+      onClick={() => toggleBookmark(medication.id)}
+      aria-label={medication.isBookmarked ? "remove bookmark" : "bookmark"}
+    >
+      <Image
+        src={medication.isBookmarked ? "/redBookmark.svg" : "/bookmark.svg"}
+        width={25}
+        height={25}
+        alt=""
+      />
     </Button>
   );
 }

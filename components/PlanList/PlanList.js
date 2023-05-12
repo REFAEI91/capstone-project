@@ -4,17 +4,17 @@ import { useState } from "react";
 export default function PlanList({ plans }) {
   const myPlans = plans.filter((plan) => plan.for === "Me");
   const otherPlans = plans.filter((plan) => plan.for !== "Me");
-  const [showPlan, setShowPlan] = useState(false);
+  const [activePlanIndex, setActivePlanIndex] = useState(null);
   const [showMyPlans, setShowMyPlans] = useState(false); // Initialize state as false
-
-  const handleShowPlan = (index) => {
-    setShowPlan(showPlan === index ? null : index);
+  const handleactivePlanIndex = (index) => {
+    setActivePlanIndex(activePlanIndex === index ? null : index);
   };
 
   const handleShowMyPlans = () => {
     // Toggle showAllPlans state when heading is clicked
     setShowMyPlans(!showMyPlans);
   };
+  console.log(plans);
   return (
     <>
       <Title>My Medications Plan</Title>
@@ -51,6 +51,7 @@ export default function PlanList({ plans }) {
               const key = `${plan.name}-${plan.gender}-${plan.age}`;
               if (!groupedPlans[key]) {
                 groupedPlans[key] = {
+                  key,
                   name: plan.name,
                   gender: plan.gender,
                   age: plan.age,
@@ -61,17 +62,17 @@ export default function PlanList({ plans }) {
               return groupedPlans;
             }, {})
           ).map((group, index) => (
-            <div key={index}>
+            <div key={group.key}>
               <Heading>
                 {group.name} ({group.gender}, {group.age})
               </Heading>
-              <Span onClick={() => handleShowPlan(index)}>
-                {showPlan === index ? "Hide Plans" : "Show Plans"} (
+              <Span onClick={() => handleactivePlanIndex(index)}>
+                {activePlanIndex === index ? "Hide Plans" : "Show Plans"} (
                 {group.medications.length}) :
               </Span>
-              {showPlan === index &&
-                group.medications.map((plan, index) => (
-                  <List key={index} importance={plan.importance}>
+              {activePlanIndex === index &&
+                group.medications.map((plan) => (
+                  <List key={plan.id} importance={plan.importance}>
                     <li>Medication Name : {plan.medication_name}</li>
                     <li>Active Ingredients : {plan.active_ingredients}</li>
                     <li>Dosage : {plan.dosage}</li>

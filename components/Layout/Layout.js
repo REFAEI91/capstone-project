@@ -2,48 +2,48 @@ import Link from "next/link";
 import Header from "../Header/Header";
 import Image from "next/image";
 import { NavBar } from "../Layout/Layout.styled";
-import { useState } from "react";
+import { useRouter } from "next/router";
 export default function Layout({ children }) {
-  const [activeLink, setActiveLink] = useState("");
+  const { asPath } = useRouter();
   return (
     <>
       <Header />
       {children}
       <NavBar>
-        <Link href="/" onClick={() => setActiveLink("home")}>
+        <Link href="/">
           <Image
             src="/home.svg"
             width={35}
             height={35}
             alt="home"
-            className={activeLink === "home" ? "active" : ""}
+            className={asPath === "/" ? "active" : ""}
           />
         </Link>
-        <Link href="/Bookmarks" onClick={() => setActiveLink("bookmarks")}>
+        <Link href="/Bookmarks">
           <Image
             src="/bookmark.svg"
             width={35}
             height={35}
             alt="bookmark"
-            className={activeLink === "bookmarks" ? "active" : ""}
+            className={asPath === "/Bookmarks" ? "active" : ""}
           />
         </Link>
-        <Link href="/plan" onClick={() => setActiveLink("plan")}>
+        <Link href="/plan">
           <Image
             src="/plan.svg"
             width={35}
             height={35}
             alt="plan"
-            className={activeLink === "plan" ? "active" : ""}
+            className={asPath === "/plan" ? "active" : ""}
           />
         </Link>
-        <Link href="/profile" onClick={() => setActiveLink("profile")}>
+        <Link href="/profile">
           <Image
             src="/profile.svg"
             width={35}
             height={35}
             alt="profile"
-            className={activeLink === "profile" ? "active" : ""}
+            className={asPath === "profile" ? "active" : ""}
           />
         </Link>
       </NavBar>
