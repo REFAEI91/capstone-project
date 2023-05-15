@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }) {
       }
     }
     const plan = {
-      ...Object.fromEntries(formData.entries()),
+      ...Object.fromEntries(formData),
       frequency,
       id: uid(),
     };
@@ -72,8 +72,6 @@ export default function App({ Component, pageProps }) {
         isOpen={showConfirmation}
         onConfirm={() => {
           setShowConfirmation(false);
-
-          console.log(medicationPlan);
         }}
         onCancel={() => setShowConfirmation(false)}
       />
