@@ -20,6 +20,6 @@ export default createGlobalStyle`
     margin: 0;
     background-color:lightyellow orchid;
     font-family: ${kanit.style.fontFamily};
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
   }
 `;

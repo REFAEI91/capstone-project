@@ -7,18 +7,17 @@ export default function BookmarkButton({ toggleBookmark, medication }) {
     justify-self: flex-end;
     border: none;
     background-color: transparent;
-    .bookmarked {
-      background-color: goldenrod;
-    }
   `;
   return (
-    <Button onClick={() => toggleBookmark(medication.id)}>
+    <Button
+      onClick={() => toggleBookmark(medication.id)}
+      aria-label={medication.isBookmarked ? "remove bookmark" : "bookmark"}
+    >
       <Image
-        src="/bookmark.svg"
-        width={23}
-        height={23}
-        alt="bookmark"
-        className={medication.isBookmarked ? "bookmarked" : ""}
+        src={medication.isBookmarked ? "/redBookmark.svg" : "/bookmark.svg"}
+        width={25}
+        height={25}
+        alt=""
       />
     </Button>
   );

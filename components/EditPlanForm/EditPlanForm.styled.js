@@ -6,33 +6,20 @@ const goldman = Goldman({
 });
 
 export const Form = styled.form`
-  display: grid;
+  display: flex;
 `;
 export const Fieldset = styled.fieldset`
-  padding: 1.3em;
   border-radius: 5px;
-  margin: 1.5em;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border: none;
 `;
-export const SomeoneElse = styled.fieldset`
-  border: none;
-`;
-export const ForFieldset = styled.fieldset`
-  border: none;
-`;
 export const Legend = styled.legend`
-  display: flex;
-  justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-family: ${goldman.style.fontFamily};
 `;
 export const Label = styled.label`
   display: flex;
-  flex-direction: column;
-  margin: 0.5rem;
 `;
-
 export const Input = styled.input`
   padding: 0.5rem;
   border: none;
@@ -42,14 +29,6 @@ export const Input = styled.input`
   width: 100%;
   margin: 0 auto;
 `;
-export const Textarea = styled.textarea`
-  margin-top: 0.5em;
-  padding: 0.5em;
-  border-radius: 5px;
-  border: none;
-  width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-`;
 export const Select = styled.select`
   margin-top: 0.5em;
   padding: 0.5em;
@@ -57,7 +36,6 @@ export const Select = styled.select`
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
-
 export const Checkbox = styled.input`
   margin-right: 0.5em;
 `;
@@ -67,7 +45,7 @@ export const Radio = styled.input`
 export const FormButton = styled.button`
   background-color: whitesmoke;
   border: 1px groove lightgray;
-  width: 100%;
+  width: 50%;
   margin-top: 0.5em;
   padding: 0.5em;
   border-radius: 5px;
