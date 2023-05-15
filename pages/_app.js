@@ -3,11 +3,11 @@ import { useState } from "react";
 import Layout from "@/components/Layout/Layout";
 import { medications } from "@/lib/db";
 import { uid } from "uid";
-import useLocalStorageState from "use-local-storage-state";
+import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
 
 export default function App({ Component, pageProps }) {
   const [medicationsList, setMedicationsList] = useState(medications);
-  const [medicationPlan, setMedicationPlan] = useLocalStorageState(
+  const [medicationPlan, setMedicationPlan] = useImmerLocalStorageState(
     "medicationPlan",
     {
       defaultValue: [],
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
       frequency,
       id: uid(),
     };
-    setMedicationPlan((prevPlan) => [...prevPlan, plan]);
+    setMedicationPlan([...medicationPlan, plan]);
   };
   function toggleBookmark(id) {
     const updatedMedications = medicationsList.map((medicationsList) => {
