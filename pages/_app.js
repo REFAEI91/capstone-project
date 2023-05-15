@@ -6,7 +6,12 @@ import { uid } from "uid";
 import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
 
 export default function App({ Component, pageProps }) {
-  const [medicationsList, setMedicationsList] = useState(medications);
+  const [medicationsList, setMedicationsList] = useImmerLocalStorageState(
+    "medicationsList",
+    {
+      defaultValue: medications,
+    }
+  );
   const [medicationPlan, setMedicationPlan] = useImmerLocalStorageState(
     "medicationPlan",
     {
@@ -45,7 +50,6 @@ export default function App({ Component, pageProps }) {
       } else return medicationsList;
     });
     setMedicationsList(updatedMedications);
-    localStorage.setItem("medicationsList", JSON.stringify(updatedMedications));
   }
   return (
     <Layout>

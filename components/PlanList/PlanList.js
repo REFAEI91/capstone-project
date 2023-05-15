@@ -1,11 +1,13 @@
+import EditPlanForm from "../EditPlanForm/EditPlanForm";
 import { List, Title, Heading, Span } from "./PlanList.styled";
 import { useState } from "react";
 
-export default function PlanList({ plans }) {
+export default function PlanList({ plans, onEditPlan, onDeletePlan }) {
   const myPlans = plans.filter((plan) => plan.for === "Me");
   const otherPlans = plans.filter((plan) => plan.for !== "Me");
   const [activePlanKey, setActivePlanKey] = useState(null);
   const [showMyPlans, setShowMyPlans] = useState(false); // Initialize state as false
+  const [editingPlan, setEditingPlan] = useState(null);
   const handleActivePlanKey = (key) => {
     setActivePlanKey(activePlanKey === key ? null : key);
   };
@@ -13,6 +15,16 @@ export default function PlanList({ plans }) {
     // Toggle showAllPlans state when heading is clicked
     setShowMyPlans(!showMyPlans);
   };
+  function handleEditPlan(plan) {
+    setEditingPlan(plan);
+  }
+  function handleSavePlan(updatedPlan) {
+    onEditPlan(updatedPlan);
+    setEditingPlan(null);
+  }
+  function handleCancelEdit() {
+    setEditingPlan(null);
+  }
   return (
     <>
       <Title>My Medications Plan</Title>
@@ -28,15 +40,28 @@ export default function PlanList({ plans }) {
               <li>Dosage : {plan.dosage}</li>
               <li>
                 Frequency : {plan.frequencyType} , {plan.frequencyTimes} , (
-                {plan.frequencyMornings ? "Mornings  " : "   "}
-                {plan.frequencyAfternoon ? "Afternoon  " : "  "}
-                {plan.frequencyEvening ? "Evenings  " : "  "}
-                {plan.frequencyBedTime ? "Bed Time  " : "  "})
+                {plan.frequencyMornings ? " Mornings  " : "   "}
+                {plan.frequencyAfternoon ? " Afternoons  " : "  "}
+                {plan.frequencyEvening ? " Evenings  " : "  "}
+                {plan.frequencyBedtime ? " Bed-Time  " : "  "})
               </li>
               <li>Form : {plan.medicationForm}</li>
               <li>Refill Date : {plan.refill}</li>
               <li>Reason for taking : {plan.reason}</li>
               <li>Instructions : {plan.instractions}</li>
+              {editingPlan === plan ? (
+                <EditPlanForm
+                  plan={plan}
+                  onSave={handleSavePlan}
+                  onCancel={handleCancelEdit}
+                />
+              ) : (
+                <>
+                  {/* Display plan details */}
+                  <button onClick={() => handleEditPlan(plan)}>Edit</button>
+                  <button onClick={() => onDeletePlan(plan.id)}>Delete</button>
+                </>
+              )}
             </List>
           ))}
         </>
@@ -85,6 +110,23 @@ export default function PlanList({ plans }) {
                     <li>Refill Date : {plan.refill}</li>
                     <li>Reason for taking : {plan.reason}</li>
                     <li>Instructions : {plan.instractions}</li>
+                    {editingPlan === plan ? (
+                      <EditPlanForm
+                        plan={plan}
+                        onSave={handleSavePlan}
+                        onCancel={handleCancelEdit}
+                      />
+                    ) : (
+                      <>
+                        {/* Display plan details */}
+                        <button onClick={() => handleEditPlan(plan)}>
+                          Edit
+                        </button>
+                        <button onClick={() => onDeletePlan(plan.id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
                   </List>
                 ))}
             </div>
