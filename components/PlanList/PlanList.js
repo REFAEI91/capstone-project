@@ -1,6 +1,7 @@
 import EditPlanForm from "../EditPlanForm/EditPlanForm";
 import { List, Title, Heading, Span } from "./PlanList.styled";
 import { useState } from "react";
+import { FormButton } from "../EditPlanForm/EditPlanForm.styled";
 
 export default function PlanList({ plans, onEditPlan, onDeletePlan }) {
   const myPlans = plans.filter((plan) => plan.for === "Me");
@@ -58,8 +59,12 @@ export default function PlanList({ plans, onEditPlan, onDeletePlan }) {
               ) : (
                 <>
                   {/* Display plan details */}
-                  <button onClick={() => handleEditPlan(plan)}>Edit</button>
-                  <button onClick={() => onDeletePlan(plan.id)}>Delete</button>
+                  <FormButton onClick={() => handleEditPlan(plan)}>
+                    Edit
+                  </FormButton>
+                  <FormButton onClick={() => onDeletePlan(plan.id)}>
+                    Delete
+                  </FormButton>
                 </>
               )}
             </List>
@@ -119,12 +124,12 @@ export default function PlanList({ plans, onEditPlan, onDeletePlan }) {
                     ) : (
                       <>
                         {/* Display plan details */}
-                        <button onClick={() => handleEditPlan(plan)}>
+                        <FormButton onClick={() => handleEditPlan(plan)}>
                           Edit
-                        </button>
-                        <button onClick={() => onDeletePlan(plan.id)}>
+                        </FormButton>
+                        <FormButton onClick={() => onDeletePlan(plan.id)}>
                           Delete
-                        </button>
+                        </FormButton>
                       </>
                     )}
                   </List>

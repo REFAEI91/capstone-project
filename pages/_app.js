@@ -4,6 +4,7 @@ import Layout from "@/components/Layout/Layout";
 import { medications } from "@/lib/db";
 import { uid } from "uid";
 import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 
 export default function App({ Component, pageProps }) {
   const [medicationsList, setMedicationsList] = useImmerLocalStorageState(
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }) {
     }
   );
   const [forSomeoneElse, setForSomeoneElse] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const handleForChange = (event) => {
     setForSomeoneElse(event.target.value === "Someone else");
   };
@@ -38,7 +40,9 @@ export default function App({ Component, pageProps }) {
       frequency,
       id: uid(),
     };
+    setShowConfirmation(true);
     setMedicationPlan([...medicationPlan, plan]);
+    event.target.reset();
   };
   function toggleBookmark(id) {
     const updatedMedications = medicationsList.map((medicationsList) => {
@@ -51,6 +55,7 @@ export default function App({ Component, pageProps }) {
     });
     setMedicationsList(updatedMedications);
   }
+
   return (
     <Layout>
       <GlobalStyle />
@@ -62,6 +67,15 @@ export default function App({ Component, pageProps }) {
         forSomeoneElse={forSomeoneElse}
         handleForChange={handleForChange}
         handleSubmit={handleAddMedicationPlanSubmit}
+      />
+      <ConfirmationModal
+        isOpen={showConfirmation}
+        onConfirm={() => {
+          setShowConfirmation(false);
+
+          console.log(medicationPlan);
+        }}
+        onCancel={() => setShowConfirmation(false)}
       />
     </Layout>
   );

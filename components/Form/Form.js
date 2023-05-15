@@ -30,6 +30,7 @@ export default function Plan({
               name="for"
               value="Me"
               onChange={handleForChange}
+              required
             />
             <label htmlFor="me">Me</label>
             <Radio
@@ -38,17 +39,18 @@ export default function Plan({
               name="for"
               defaultValue="Someone else"
               onChange={handleForChange}
+              required
             />
             <label htmlFor="someoneElse">Someone else</label>
           </ForFieldset>
           {forSomeoneElse && (
             <SomeoneElse>
               <Label htmlFor="name">Name : </Label>
-              <Input type="text" name="name" />
+              <Input type="text" name="name" required />
               <Label htmlFor="age">Age : </Label>
-              <Input type="number" name="age" />
+              <Input type="number" name="age" required />
               <Label htmlFor="gender">Gender : </Label>
-              <Select name="gender">
+              <Select name="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -56,21 +58,28 @@ export default function Plan({
             </SomeoneElse>
           )}
           <Label htmlFor="importance">Importance : </Label>
-          <Select name="importance">
+          <Select name="importance" required>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
           </Select>
           <Label htmlFor="medication_name">Medication Name : </Label>
-          <Input type="text" name="medication_name" />
+          <Input type="text" name="medication_name" required />
           <Label htmlFor="activ_ingredients">Active Ingredients :</Label>
           <Input type="text" name="active_ingredients" />
           <Label htmlFor="dosage">Dosage :</Label>
-          <Input type="number" name="dosage" id="dosage" min="0" step="0.01" />
+          <Input
+            type="number"
+            name="dosage"
+            id="dosage"
+            min="0"
+            step="0.01"
+            required
+          />
           <Label htmlFor="reason">Reason for taking: </Label>
-          <Input type="text" name="reason" />
+          <Input type="text" name="reason" required />
           <Label htmlFor="medicationForm">Medication Form : </Label>
-          <Select name="medicationForm">
+          <Select name="medicationForm" required>
             <option value="Tablet">Tablet</option>
             <option value="Capsule">Capsule</option>
             <option value="Syrup">Syrup</option>
@@ -86,12 +95,12 @@ export default function Plan({
           <SomeoneElse>
             <Label htmlFor="frequency">
               Frequency :
-              <Select name="frequencyType">
+              <Select name="frequencyType" required>
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>
                 <option value="Monthly">Monthly</option>
               </Select>
-              <Select name="frequencyTimes">
+              <Select name="frequencyTimes" required>
                 <option value="Once">Once</option>
                 <option value="Twice">Twice</option>
                 <option value="Thrice">Thrice</option>

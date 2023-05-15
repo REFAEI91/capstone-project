@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Fieldset, Form, Legend } from "./EditPlanForm.styled";
+import {
+  Fieldset,
+  Form,
+  Legend,
+  Label,
+  Input,
+  Select,
+  Checkbox,
+  Radio,
+  FormButton,
+} from "./EditPlanForm.styled";
 
 export default function EditPlanForm({ plan, onSave, onCancel }) {
   const [updatedPlan, setUpdatedPlan] = useState(plan);
@@ -31,8 +41,8 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
         <Legend>Edit Plan</Legend>
         <Fieldset>
           <legend>For:</legend>
-          <label htmlFor="me">
-            <input
+          <Label htmlFor="me">
+            <Radio
               type="radio"
               id="me"
               name="for"
@@ -41,9 +51,9 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
               onChange={handleInputChange}
             />
             Me
-          </label>
-          <label htmlFor="someoneElse">
-            <input
+          </Label>
+          <Label htmlFor="someoneElse">
+            <Radio
               type="radio"
               id="someoneElse"
               name="for"
@@ -52,29 +62,29 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
               onChange={handleInputChange}
             />
             Someone else
-          </label>
+          </Label>
 
           {updatedPlan.for === "Someone else" && (
             <>
               <legend>Personal information:</legend>
-              <label htmlFor="name">Name:</label>
-              <input
+              <Label htmlFor="name">Name:</Label>
+              <Input
                 type="text"
                 id="name"
                 name="name"
                 value={updatedPlan.name}
                 onChange={handleInputChange}
               />
-              <label htmlFor="age">Age:</label>
-              <input
+              <Label htmlFor="age">Age:</Label>
+              <Input
                 type="number"
                 id="age"
                 name="age"
                 value={updatedPlan.age}
                 onChange={handleInputChange}
               />
-              <label htmlFor="gender">Gender:</label>
-              <select
+              <Label htmlFor="gender">Gender:</Label>
+              <Select
                 id="gender"
                 name="gender"
                 value={updatedPlan.gender}
@@ -83,12 +93,12 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
-              </select>
+              </Select>
             </>
           )}
         </Fieldset>
-        <label htmlFor="importance">Importance:</label>
-        <select
+        <Label htmlFor="importance">Importance:</Label>
+        <Select
           id="importance"
           name="importance"
           value={updatedPlan.importance}
@@ -97,41 +107,41 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
-        </select>
-        <label htmlFor="medication_name">Medication Name:</label>
-        <input
+        </Select>
+        <Label htmlFor="medication_name">Medication Name:</Label>
+        <Input
           type="text"
           id="medication_name"
           name="medication_name"
           value={updatedPlan.medication_name}
           onChange={handleInputChange}
         />
-        <label htmlFor="active_ingredients">Active Ingredients:</label>
-        <input
+        <Label htmlFor="active_ingredients">Active Ingredients:</Label>
+        <Input
           type="text"
           id="active_ingredients"
           name="active_ingredients"
           value={updatedPlan.active_ingredients}
           onChange={handleInputChange}
         />
-        <label htmlFor="dosage">Dosage:</label>
-        <input
+        <Label htmlFor="dosage">Dosage:</Label>
+        <Input
           type="number"
           id="dosage"
           name="dosage"
           value={updatedPlan.dosage}
           onChange={handleInputChange}
         />
-        <label htmlFor="reason">Reason for taking:</label>
-        <input
+        <Label htmlFor="reason">Reason for taking:</Label>
+        <Input
           type="text"
           id="reason"
           name="reason"
           value={updatedPlan.reason}
           onChange={handleInputChange}
         />
-        <label htmlFor="medicationForm">Medication Form:</label>
-        <select
+        <Label htmlFor="medicationForm">Medication Form:</Label>
+        <Select
           name="medicationForm"
           id="medicationForm"
           onChange={handleInputChange}
@@ -147,17 +157,17 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
           <option value="Drops">Drops</option>
           <option value="Spray">Spray</option>
           <option value="Other">Other</option>
-        </select>
+        </Select>
         <Fieldset>
           <Legend>Frequency:</Legend>
-          <label htmlFor="frequency">
-            <select name="frequencyType" onChange={handleInputChange}>
+          <Label htmlFor="frequency">
+            <Select name="frequencyType" onChange={handleInputChange}>
               <option value="Daily">Daily</option>
               <option value="Weekly">Weekly</option>
               <option value="Monthly">Monthly</option>
-            </select>
-            <select name="frequencyTimes" onChange={handleInputChange}>
-              <option value="">select times</option>
+            </Select>
+            <Select name="frequencyTimes" onChange={handleInputChange}>
+              <option value=""> -- </option>
               <option value="Once">Once</option>
               <option value="Twice">Twice</option>
               <option value="Thrice">Thrice</option>
@@ -165,30 +175,30 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
               <option value="Five times">Five times</option>
               <option value="Six times">Six times</option>
               <option value="More">More</option>
-            </select>
-          </label>
-          <input
+            </Select>
+          </Label>
+          <Checkbox
             type="checkbox"
             name="frequencyMornings"
             value={updatedPlan.frequencyMornings}
             onChange={handleCheckboxChange}
           />
           Mornings
-          <input
+          <Checkbox
             type="checkbox"
             name="frequencyAfternoon"
             value={updatedPlan.frequencyAfternoon}
             onChange={handleCheckboxChange}
           />
           Afternoon
-          <input
+          <Checkbox
             type="checkbox"
             name="frequencyEvening"
             value={updatedPlan.frequencyEvening}
             onChange={handleCheckboxChange}
           />
           Evening
-          <input
+          <Checkbox
             type="checkbox"
             name="frequencyBedtime"
             value={updatedPlan.frequencyBedtime}
@@ -196,15 +206,15 @@ export default function EditPlanForm({ plan, onSave, onCancel }) {
           />
           Bedtime
         </Fieldset>
-        <label htmlFor="instractions">Instructions : </label>
+        <Label htmlFor="instractions">Instructions : </Label>
         <textarea type="text" name="instractions" />
-        <label htmlFor="refill">Refill :</label>
-        <input type="date" name="refill" />
+        <Label htmlFor="refill">Refill :</Label>
+        <Input type="date" name="refill" />
 
-        <button type="submit">Save</button>
-        <button type="button" onClick={onCancel}>
+        <FormButton type="submit">Save</FormButton>
+        <FormButton type="button" onClick={onCancel}>
           Cancel
-        </button>
+        </FormButton>
       </Fieldset>
     </Form>
   );
