@@ -43,7 +43,7 @@ export default function Layout({ children }) {
             width={35}
             height={35}
             alt="profile"
-            className={asPath === "profile" ? "active" : ""}
+            className={asPath === "/profile" ? "active" : ""}
           />
         </Link>
       </NavBar>
