@@ -3,10 +3,16 @@ import { useState } from "react";
 import Layout from "@/components/Layout/Layout";
 import { medications } from "@/lib/db";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
   const [medicationsList, setMedicationsList] = useState(medications);
-  const [medicationPlan, setMedicationPlan] = useState([]);
+  const [medicationPlan, setMedicationPlan] = useLocalStorageState(
+    "medicationPlan",
+    {
+      defaultValue: [],
+    }
+  );
   const [forSomeoneElse, setForSomeoneElse] = useState(false);
   const handleForChange = (event) => {
     setForSomeoneElse(event.target.value === "Someone else");
