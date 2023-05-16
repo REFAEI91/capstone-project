@@ -6,13 +6,36 @@ const goldman = Goldman({
 });
 export const Container = styled.section`
   display: grid;
-  padding: 1rem;
+  grid-template-columns: 1fr 1fr;
   border-radius: 5px;
+  padding: 1rem;
   margin: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 `;
-export const UserInfo = styled.h2`
+export const UserName = styled.h3`
+  font-size: 1.2rem;
   font-family: ${goldman.style.fontFamily};
+  grid-column: 1 / 3;
+  text-align: center;
+  margin: 0;
+`;
+export const Span = styled.span`
+  font-family: ${goldman.style.fontFamily};
+`;
+export const List = styled.ul`
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0;
+`;
+export const EditButton = styled.button`
+  grid-column: 1 / 3;
+  background-color: whitesmoke;
+  border: 1px groove lightgray;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 export const Form = styled.form`
   display: grid;
@@ -27,7 +50,6 @@ export const Fieldset = styled.fieldset`
 
 export const Label = styled.label`
   display: flex;
-  flex-direction: column;
   margin: 0.5rem;
 `;
 
@@ -36,9 +58,9 @@ export const Input = styled.input`
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  transition: width 0.3s ease-in-out;
-  width: 100%;
-  margin: 0 auto;
+  &:focus {
+    width: 100%;
+  }
 `;
 
 export const Select = styled.select`
