@@ -17,7 +17,7 @@ export default function BookmarkButton({ toggleBookmark, medication }) {
         src={medication.isBookmarked ? "/redBookmark.svg" : "/bookmark.svg"}
         width={25}
         height={25}
-        alt=""
+        alt="bookmark"
       />
     </Button>
   );
