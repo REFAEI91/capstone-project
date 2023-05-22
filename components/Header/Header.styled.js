@@ -8,7 +8,7 @@ const goldman = Goldman({
 export const HeaderContainer = styled.header`
   display: flex;
   position: relative;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 export const Title = styled.h1`
   font-family: ${goldman.style.fontFamily};
@@ -18,7 +18,6 @@ export const Title = styled.h1`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
 `;
 export const Logo = styled.img`
-  position: absolute;
   top: 0.5rem;
   left: 0.5rem;
 
