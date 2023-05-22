@@ -44,24 +44,7 @@ const ButtonGroup = styled.div`
     }
   }
 `;
-const CardPreview = styled.div`
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-`;
 
-const CardTitle = styled.h3`
-  margin-bottom: 10px;
-`;
-
-const CardDescription = styled.p`
-  color: #666;
-`;
 export default function ConfirmationModal({ isOpen, onConfirm, onCancel }) {
   return (
     <StyledModal isOpen={isOpen}>

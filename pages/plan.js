@@ -2,6 +2,7 @@ import Head from "next/head";
 import Form from "../components/Form/Form";
 import { getSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { Results, SignInButton } from "@/components/Login/Login.styled";
 
 export default function Plan({
   medicationPlan,
@@ -35,10 +36,10 @@ export default function Plan({
         <title>Plan</title>
       </Head>
       {!session && (
-        <div>
+        <Results>
           <p>You are not logged in. Please sign in to continue.</p>
-          <button onClick={handleSignIn}>Sign in</button>
-        </div>
+          <SignInButton onClick={handleSignIn}>Sign in</SignInButton>
+        </Results>
       )}
       {session && (
         <Form

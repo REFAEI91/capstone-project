@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Image from "next/image";
 import { NavBar } from "../Layout/Layout.styled";
 import { useRouter } from "next/router";
-import Login from "../Login";
+import Login from "../Login/Login";
 export default function Layout({ children }) {
   const { asPath } = useRouter();
   return (

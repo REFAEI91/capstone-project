@@ -1,4 +1,4 @@
-import Login from "../Login";
+import Login from "../Login/Login";
 import { HeaderContainer, Title, Logo } from "./Header.styled";
 export default function Header() {
   return (

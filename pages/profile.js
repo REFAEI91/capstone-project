@@ -4,6 +4,7 @@ import ProfileForm from "@/components/ProfileForm/ProfileForm";
 import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
 import { getSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { Results, SignInButton } from "@/components/Login/Login.styled";
 
 export default function Profile({ medicationPlan }) {
   const [plans, setPlans] = useImmerLocalStorageState("medicationPlan", {
@@ -51,10 +52,10 @@ export default function Profile({ medicationPlan }) {
         <title>Profile</title>
       </Head>
       {!session && (
-        <div>
+        <Results>
           <p>You are not logged in. Please sign in to continue.</p>
-          <button onClick={handleSignIn}>Sign in</button>
-        </div>
+          <SignInButton onClick={handleSignIn}>Sign in</SignInButton>
+        </Results>
       )}
       {session && (
         <>
