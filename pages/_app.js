@@ -5,6 +5,7 @@ import { medications } from "@/lib/db";
 import { uid } from "uid";
 import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import { SessionProvider } from "next-auth/react";
 
 export default function App({ Component, pageProps }) {
   const [medicationsList, setMedicationsList] = useImmerLocalStorageState(
@@ -57,24 +58,26 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <Layout>
-      <GlobalStyle />
-      <Component
-        {...pageProps}
-        toggleBookmark={toggleBookmark}
-        medicationsList={medicationsList}
-        medicationPlan={medicationPlan}
-        forSomeoneElse={forSomeoneElse}
-        handleForChange={handleForChange}
-        handleSubmit={handleAddMedicationPlanSubmit}
-      />
-      <ConfirmationModal
-        isOpen={showConfirmation}
-        onConfirm={() => {
-          setShowConfirmation(false);
-        }}
-        onCancel={() => setShowConfirmation(false)}
-      />
-    </Layout>
+    <SessionProvider session={pageProps.session}>
+      <Layout>
+        <GlobalStyle />
+        <Component
+          {...pageProps}
+          toggleBookmark={toggleBookmark}
+          medicationsList={medicationsList}
+          medicationPlan={medicationPlan}
+          forSomeoneElse={forSomeoneElse}
+          handleForChange={handleForChange}
+          handleSubmit={handleAddMedicationPlanSubmit}
+        />
+        <ConfirmationModal
+          isOpen={showConfirmation}
+          onConfirm={() => {
+            setShowConfirmation(false);
+          }}
+          onCancel={() => setShowConfirmation(false)}
+        />
+      </Layout>
+    </SessionProvider>
   );
 }
