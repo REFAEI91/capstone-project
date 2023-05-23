@@ -7,10 +7,10 @@ export const List = styled.ul`
   border-radius: 5px;
   background-color: ${(props) =>
     props.importance === "High"
-      ? "#F0c3be"
+      ? "#a97d79"
       : props.importance === "Medium"
-      ? "#e0EFB5"
-      : "#EAFBEA"};
+      ? "#a9af96"
+      : "#b3c5d3"};
 `;
 export const Title = styled.h2`
   font-size: 1.25rem;
@@ -19,8 +19,7 @@ export const Title = styled.h2`
   justify-content: center;
 `;
 export const Span = styled.span`
-  border: 1px groove #e0efb5;
-  background-color: #e0efb5;
+  background-color: #cad3db;
   border-radius: 5px;
   margin: 1rem;
   padding: 0.2rem;

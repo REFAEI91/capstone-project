@@ -14,12 +14,16 @@ export default createGlobalStyle`
   }
 
   body {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
   margin-bottom: 10px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-    margin: 0;
-    background-color:lightyellow orchid;
-    font-family: ${kanit.style.fontFamily};
-    padding-bottom: 3rem;
+  margin: 0;
+  background-color: lightyellow orchid;
+  font-family: ${kanit.style.fontFamily};
+  padding-bottom: 3rem;
+  &.isDarkMode {
+  color: #fff;
+  background-color: #43474c;
+  }
   }
 `;

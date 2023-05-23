@@ -51,12 +51,18 @@ export const StyledImageSun = styled(Image)`
   position: absolute;
   top: 1px;
   z-index: 100;
+  filter: ${({ darkMode }) =>
+    darkMode ? "sepia(1) saturate(1) hue-rotate(180deg)" : ""};
+  fill: ${({ darkMode }) => (darkMode ? "yellow" : "")};
 `;
+
 export const StyledImageMoon = styled(Image)`
   position: absolute;
   top: 1px;
   right: 1px;
   z-index: 100;
+  filter: ${({ darkMode }) =>
+    darkMode && "invert(10) sepia(0.5) saturate(0.2) hue-rotate(180deg)"};
 `;
 export const Input = styled.input`
   width: 0;

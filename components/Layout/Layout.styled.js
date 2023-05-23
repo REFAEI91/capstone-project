@@ -11,8 +11,8 @@ export const NavBar = styled.nav`
   .active {
     padding: 0.2rem;
     margin: 0.1rem;
-    background-color: #abc4aa;
-    border-style: groove;
+    background-color: #cad3db;
+    border: 0.1px solid black;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     transition: all 0.3s ease-out;
