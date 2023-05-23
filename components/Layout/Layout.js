@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Image from "next/image";
 import { NavBar } from "../Layout/Layout.styled";
 import { useRouter } from "next/router";
-import Login from "../Login/Login";
+import DarkMode from "../DarkMode/DarkMode";
 export default function Layout({ children }) {
   const { asPath } = useRouter();
   return (
@@ -47,6 +47,7 @@ export default function Layout({ children }) {
             className={asPath === "/profile" ? "active" : ""}
           />
         </Link>
+        <DarkMode />
       </NavBar>
     </>
   );
