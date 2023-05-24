@@ -6,7 +6,6 @@ export default function BookmarkButton({
   medication,
   isDarkMode,
 }) {
-  console.log(isDarkMode);
   const Button = styled.button`
     position: absolute;
     justify-self: flex-end;

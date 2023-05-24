@@ -8,7 +8,7 @@ export default function Layout({ children, isDarkMode, toggleDarkMode }) {
   const { asPath } = useRouter();
   return (
     <>
-      <Header />
+      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       {children}
       <NavBar>
         <Link href="/">
@@ -47,7 +47,6 @@ export default function Layout({ children, isDarkMode, toggleDarkMode }) {
             className={asPath === "/profile" ? "active" : ""}
           />
         </Link>
-        <DarkMode isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       </NavBar>
     </>
   );
