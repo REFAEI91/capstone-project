@@ -5,6 +5,7 @@ import {
   Input,
   StyledImageSun,
   StyledImageMoon,
+  Title,
 } from "./DarkMode.styled";
 export default function DarkMode({ isDarkMode, toggleDarkMode }) {
   useEffect(() => {
@@ -28,15 +29,20 @@ export default function DarkMode({ isDarkMode, toggleDarkMode }) {
           onChange={toggleDarkMode}
         />
         <Label htmlFor="dark-mode-toggle">
+          <Title>{isDarkMode ? "Dark Mode" : "Light Mode"}</Title>
           {isDarkMode ? (
-            <StyledImageMoon
-              src="/moon.svg"
-              alt="moon"
-              width={25}
-              height={25}
-            />
+            <>
+              <StyledImageMoon
+                src="/moon.svg"
+                alt="moon"
+                width={25}
+                height={25}
+              />
+            </>
           ) : (
-            <StyledImageSun src="/sun.svg" alt="sun" width={25} height={25} />
+            <>
+              <StyledImageSun src="/sun.svg" alt="sun" width={25} height={25} />
+            </>
           )}
         </Label>
       </ToggleContainer>
