@@ -19,25 +19,27 @@ export default function Settings({ isDarkMode, toggleDarkMode }) {
     `}
   `;
   const SettingsMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 100;
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
-    width: 7rem;
+    width: 9rem;
+    border-radius: 10px;
     background: rgb(255, 255, 255);
-
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
-
     ${isMenuOpen &&
     `
       transform: translateX(0);
     `}
     ${isDarkMode &&
     `
-background-color: gray;
+background-color: #505050;
     `}
   `;
 
@@ -67,7 +69,7 @@ background-color: gray;
           <StyledImage src="/close.svg" width={35} height={35} alt="close" />
           Close
         </SettingsButton>
-        <Login />
+        <Login isDarkMode={isDarkMode} />
         <DarkMode isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       </SettingsMenu>
     </>
