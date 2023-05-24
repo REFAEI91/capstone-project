@@ -2,7 +2,7 @@ import Card from "../Card/Card";
 import { useState } from "react";
 import { SearchBar, List, Results, Input } from "./CardList.styled";
 
-export default function CardList({ medications, toggleBookmark }) {
+export default function CardList({ medications, toggleBookmark, isDarkMode }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleInputChange = (event) => {
@@ -32,7 +32,11 @@ export default function CardList({ medications, toggleBookmark }) {
             )}
             {filteredMedications.map((medication) => (
               <li key={medication.id}>
-                <Card medication={medication} toggleBookmark={toggleBookmark} />
+                <Card
+                  medication={medication}
+                  toggleBookmark={toggleBookmark}
+                  isDarkMode={isDarkMode}
+                />
               </li>
             ))}
           </>

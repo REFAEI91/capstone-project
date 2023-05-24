@@ -20,8 +20,15 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
+  const [isDarkMode, setIsDarkMode] = useImmerLocalStorageState("isDarkMode", {
+    defaultValue: false,
+  });
   const [forSomeoneElse, setForSomeoneElse] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const handleForChange = (event) => {
     setForSomeoneElse(event.target.value === "Someone else");
   };
@@ -59,7 +66,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout>
+      <Layout isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}>
         <GlobalStyle />
         <Component
           {...pageProps}
@@ -69,7 +76,9 @@ export default function App({ Component, pageProps }) {
           forSomeoneElse={forSomeoneElse}
           handleForChange={handleForChange}
           handleSubmit={handleAddMedicationPlanSubmit}
+          isDarkMode={isDarkMode}
         />
+
         <ConfirmationModal
           isOpen={showConfirmation}
           onConfirm={() => {
