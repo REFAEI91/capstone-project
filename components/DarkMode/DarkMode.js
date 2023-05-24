@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   ToggleContainer,
   Label,
@@ -6,11 +6,7 @@ import {
   StyledImageSun,
   StyledImageMoon,
 } from "./DarkMode.styled";
-export default function DarkMode() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
+export default function DarkMode({ isDarkMode, toggleDarkMode }) {
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("isDarkMode");

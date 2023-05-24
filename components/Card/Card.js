@@ -2,7 +2,7 @@ import { useState } from "react";
 import BookmarkButton from "../BookmarkButton";
 import { Container, Title, Button, DetailsList, Span } from "./Card.styled";
 
-export default function Card({ medication, toggleBookmark }) {
+export default function Card({ medication, toggleBookmark, isDarkMode }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
@@ -10,7 +10,11 @@ export default function Card({ medication, toggleBookmark }) {
   };
   return (
     <Container>
-      <BookmarkButton medication={medication} toggleBookmark={toggleBookmark} />
+      <BookmarkButton
+        medication={medication}
+        toggleBookmark={toggleBookmark}
+        isDarkMode={isDarkMode}
+      />
       <Title>{medication.name}</Title>
       <p>{medication.summary}</p>
       <Button onClick={() => handleClick(medication.id)}>

@@ -1,12 +1,22 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function BookmarkButton({ toggleBookmark, medication }) {
+export default function BookmarkButton({
+  toggleBookmark,
+  medication,
+  isDarkMode,
+}) {
+  console.log(isDarkMode);
   const Button = styled.button`
     position: absolute;
     justify-self: flex-end;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+    ${isDarkMode &&
+    `
+      filter: invert(1);
+    `}
   `;
   return (
     <Button
