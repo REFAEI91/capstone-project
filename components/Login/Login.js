@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Button, Section, StyledImage } from "./Login.styled";
 
 export default function Login({ isDarkMode }) {
-  console.log(isDarkMode);
   const { data: session } = useSession();
   return (
     <>
