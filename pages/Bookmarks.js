@@ -2,7 +2,11 @@ import Card from "@/components/Card/Card";
 import Head from "next/head";
 import styled from "styled-components";
 
-export default function Bookmarks({ toggleBookmark, medicationsList }) {
+export default function Bookmarks({
+  toggleBookmark,
+  medicationsList,
+  isDarkMode,
+}) {
   const Results = styled.p`
     text-align: center;
     margin: 1em;
@@ -30,6 +34,7 @@ export default function Bookmarks({ toggleBookmark, medicationsList }) {
             key={medication.id}
             medication={medication}
             toggleBookmark={toggleBookmark}
+            isDarkMode={isDarkMode}
           />
         ))
       )}

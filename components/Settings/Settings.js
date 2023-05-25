@@ -3,7 +3,11 @@ import Login from "../Login/Login";
 import DarkMode from "../DarkMode/DarkMode";
 import styled from "styled-components";
 
-export default function Settings({ isDarkMode, toggleDarkMode }) {
+export default function Settings({
+  isDarkMode,
+  toggleDarkMode,
+  medicationPlan,
+}) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const SettingsButton = styled.button`
     background-color: transparent;
@@ -27,11 +31,11 @@ export default function Settings({ isDarkMode, toggleDarkMode }) {
     top: 0;
     right: 0;
     height: 100vh;
-    width: 9rem;
+    width: 12rem;
     border-radius: 10px;
     background: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.6s ease-out;
     transform: translateX(100%);
     ${isMenuOpen &&
     `
@@ -69,7 +73,8 @@ background-color: #505050;
           <StyledImage src="/close.svg" width={35} height={35} alt="close" />
           Close
         </SettingsButton>
-        <Login isDarkMode={isDarkMode} />
+        <Login isDarkMode={isDarkMode} medicationPlan={medicationPlan} />
+
         <DarkMode isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       </SettingsMenu>
     </>

@@ -66,7 +66,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}>
+      <Layout
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        medicationPlan={medicationPlan}
+      >
         <GlobalStyle />
         <Component
           {...pageProps}

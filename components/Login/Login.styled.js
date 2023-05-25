@@ -37,7 +37,7 @@ export const Button = styled.button`
   position: absolute;
   align-items: center;
   bottom: 1rem;
-  left: 2rem;
+  left: 4rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -46,4 +46,8 @@ export const Button = styled.button`
 `;
 export const StyledImage = styled(Image)`
   border-radius: 50%;
+`;
+export const List = styled.ul`
+  list-style: none;
+  padding: 0;
 `;

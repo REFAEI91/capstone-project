@@ -64,8 +64,7 @@ export const StyledImageMoon = styled(Image)`
     darkMode && "invert(10) sepia(0.5) saturate(0.2) hue-rotate(180deg)"};
 `;
 export const Input = styled.input`
-  width: 0;
-  height: 0;
+  visibility: hidden;
   &:checked + ${Label} .background {
     background: #242424;
   }

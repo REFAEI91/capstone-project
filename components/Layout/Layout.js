@@ -4,11 +4,20 @@ import Image from "next/image";
 import { NavBar } from "../Layout/Layout.styled";
 import { useRouter } from "next/router";
 import DarkMode from "../DarkMode/DarkMode";
-export default function Layout({ children, isDarkMode, toggleDarkMode }) {
+export default function Layout({
+  children,
+  isDarkMode,
+  toggleDarkMode,
+  medicationPlan,
+}) {
   const { asPath } = useRouter();
   return (
     <>
-      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Header
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        medicationPlan={medicationPlan}
+      />
       {children}
       <NavBar>
         <Link href="/">
