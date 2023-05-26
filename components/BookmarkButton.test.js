@@ -1,30 +1,26 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import BookmarkButton from "./BookmarkButton";
 
-describe("BookmarkButton", () => {
-  it("should toggle bookmark when clicked", () => {
-    // Setup
-    const toggleBookmark = jest.fn();
-    const medication = {
-      id: 1,
-      isBookmarked: false,
-    };
+test("calls toggleBookmark when clicked with medication id", async () => {
+  const toggleBookmark = jest.fn();
+  const user = userEvent.setup();
 
-    // Render the component
-    const { getByLabelText } = render(
-      <BookmarkButton
-        toggleBookmark={toggleBookmark}
-        medication={medication}
-        isDarkMode={false}
-      />
-    );
+  const medication = {
+    id: 1,
+    isBookmarked: false,
+  };
 
-    // Find the button element and click it
-    const button = getByLabelText("bookmark");
-    fireEvent.click(button);
+  render(
+    <BookmarkButton
+      toggleBookmark={toggleBookmark}
+      medication={medication}
+      isDarkMode={false}
+    />
+  );
 
-    // Assertion: toggleBookmark should be called with the correct arguments
-    expect(toggleBookmark).toHaveBeenCalledWith(medication.id);
-  });
+  const button = screen.getByRole("button", { name: "bookmark" });
+  await user.click(button);
+
+  expect(toggleBookmark).toHaveBeenCalledWith(1);
 });

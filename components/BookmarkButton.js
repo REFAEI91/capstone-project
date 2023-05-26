@@ -19,6 +19,7 @@ export default function BookmarkButton({
 }) {
   return (
     <Button
+      type="button"
       onClick={() => toggleBookmark(medication.id)}
       aria-label={medication.isBookmarked ? "remove bookmark" : "bookmark"}
       isDarkMode={isDarkMode}

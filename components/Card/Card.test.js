@@ -1,73 +1,79 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Card from "./Card";
 
 const mockMedication = {
   id: 1,
-  name: "Medication 1",
-  summary: "Summary of Medication 1",
-  mechanismOfAction: "Mechanism of Action",
-  uses: "Uses of Medication",
-  sideEffects: "Side Effects of Medication",
-  dosageAndAdministration: "Dosage and Administration",
-  precautions: "Precautions for Medication",
+  name: "Acetaminophen",
+  summary:
+    "a pain reliever commonly found in over-the-counter medications such as Tylenol.",
+  mechanismOfAction:
+    "Acetaminophen works by inhibiting the production of certain chemicals in the body that cause pain and fever.",
+  uses: "It is used to relieve mild to moderate pain and to reduce fever.",
+  dosageAndAdministration:
+    "The recommended dose and frequency depend on the age and weight of the patient.",
+  sideEffects:
+    "The most common side effects of acetaminophen include nausea, vomiting, and liver damage when taken in high doses.",
+  precautions:
+    "Acetaminophen can interact with other medications and supplements, so it should be used with caution. It should be avoided or used with caution by individuals with certain medical conditions such as liver disease.",
 };
 
-describe("Card", () => {
-  it("renders the card with medication details", () => {
-    render(
-      <Card
-        medication={mockMedication}
-        toggleBookmark={() => {}}
-        isDarkMode={false}
-      />
-    );
+test("renders the card with medication details", () => {
+  render(<Card medication={mockMedication} />);
 
-    // Assert that the medication name is rendered
-    const medicationName = screen.getByText("Medication 1");
-    expect(medicationName).toBeInTheDocument();
+  const medicationName = screen.getByText("Acetaminophen");
+  expect(medicationName).toBeInTheDocument();
 
-    // Assert that the medication summary is rendered
-    const medicationSummary = screen.getByText("Summary of Medication 1");
-    expect(medicationSummary).toBeInTheDocument();
+  const medicationSummary = screen.getByText(
+    "a pain reliever commonly found in over-the-counter medications such as Tylenol."
+  );
+  expect(medicationSummary).toBeInTheDocument();
 
-    // Assert that the "More Info" button is rendered
-    const moreInfoButton = screen.getByText("More Info ⌵");
-    expect(moreInfoButton).toBeInTheDocument();
+  const moreInfoButton = screen.getByText("More Info ⌵");
+  expect(moreInfoButton).toBeInTheDocument();
+});
 
-    // Assert that the expanded details are not initially rendered
-    const mechanismOfAction = screen.queryByText("Mechanism of Action");
-    expect(mechanismOfAction).not.toBeInTheDocument();
-  });
+test(`toggles the expanded details when the "More Info ⌵" button is clicked`, async () => {
+  const user = userEvent.setup();
 
-  it('toggles the expanded details when the "More Info" button is clicked', () => {
-    render(
-      <Card
-        medication={mockMedication}
-        toggleBookmark={() => {}}
-        isDarkMode={false}
-      />
-    );
+  render(<Card medication={mockMedication} />);
 
-    // Click the "More Info" button
-    const moreInfoButton = screen.getByText("More Info ⌵");
-    fireEvent.click(moreInfoButton);
+  const moreInfoButton = screen.getByRole("button", { name: "More Info ⌵" });
+  await user.click(moreInfoButton);
 
-    // Assert that the expanded details are rendered
-    const mechanismOfAction = screen.getByText("Mechanism of Action");
-    expect(mechanismOfAction).toBeInTheDocument();
+  const mechanismOfAction = screen.getByText(
+    "Acetaminophen works by inhibiting the production of certain chemicals in the body that cause pain and fever."
+  );
+  expect(mechanismOfAction).toBeInTheDocument();
 
-    // Assert that the "Less Info" button is displayed after clicking
-    const lessInfoButton = screen.getByText("Less Info ⌃");
-    expect(lessInfoButton).toBeInTheDocument();
+  const usesOfMedication = screen.getByText(
+    "It is used to relieve mild to moderate pain and to reduce fever."
+  );
+  expect(usesOfMedication).toBeInTheDocument();
 
-    // Click the "Less Info" button
-    fireEvent.click(lessInfoButton);
+  const sideEffects = screen.getByText(
+    "The most common side effects of acetaminophen include nausea, vomiting, and liver damage when taken in high doses."
+  );
+  expect(sideEffects).toBeInTheDocument();
 
-    // Assert that the expanded details are not rendered
-    const mechanismOfActionAfterCollapse = screen.queryByText(
-      "Mechanism of Action"
-    );
-    expect(mechanismOfActionAfterCollapse).not.toBeInTheDocument();
-  });
+  const dosageAndAdministration = screen.getByText(
+    "The recommended dose and frequency depend on the age and weight of the patient."
+  );
+  expect(dosageAndAdministration).toBeInTheDocument();
+
+  const precautions = screen.getByText(
+    "Acetaminophen can interact with other medications and supplements, so it should be used with caution. It should be avoided or used with caution by individuals with certain medical conditions such as liver disease."
+  );
+  expect(precautions).toBeInTheDocument();
+
+  const lessInfoButton = screen.getByText("Less Info ⌃");
+  expect(lessInfoButton).toBeInTheDocument();
+
+  await user.click(lessInfoButton);
+
+  expect(mechanismOfAction).not.toBeInTheDocument();
+  expect(usesOfMedication).not.toBeInTheDocument();
+  expect(sideEffects).not.toBeInTheDocument();
+  expect(dosageAndAdministration).not.toBeInTheDocument();
+  expect(precautions).not.toBeInTheDocument();
 });
