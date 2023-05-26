@@ -35,7 +35,6 @@ export const FilterSelect = styled.select`
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   transition: width 0.3s ease-in-out;
-  width: 30%;
   margin: 0 auto;
 
   &:focus {

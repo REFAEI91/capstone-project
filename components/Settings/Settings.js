@@ -61,7 +61,7 @@ export default function Settings({
 
   return (
     <>
-      <SettingsButton onClick={toggleMenu}>
+      <SettingsButton onClick={toggleMenu} isDarkMode={isDarkMode}>
         <StyledImage
           src="/settings.svg"
           width={30}
