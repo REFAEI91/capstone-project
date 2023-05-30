@@ -40,5 +40,4 @@ export const DetailsList = styled.ul`
 export const Span = styled.span`
   font-family: ${goldman.style.fontFamily};
   font-size: 1rem;
-  background-color: #fff8de;
 `;

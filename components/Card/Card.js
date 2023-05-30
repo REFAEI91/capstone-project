@@ -21,7 +21,7 @@ export default function Card({ medication, toggleBookmark, isDarkMode }) {
         {isExpanded ? "Less Info ⌃ " : "More Info ⌵"}
       </Button>
       {isExpanded && (
-        <DetailsList>
+        <DetailsList isDarkMode={isDarkMode}>
           <li>
             <Span>Mechanism of Action : </Span>
             <br /> {medication.mechanismOfAction}
