@@ -24,7 +24,7 @@ export const Input = styled.input`
 export const Results = styled.p`
   text-align: center;
 `;
-export const FilterContainer = styled.section`
+export const FilterContainer = styled.label`
   margin: 1em;
   display: flex;
 `;
