@@ -26,9 +26,7 @@ describe("CardList component", () => {
       isBookmarked: false,
     },
   ];
-
   const mockToggleBookmark = jest.fn();
-
   test("search for medications by name or summary", () => {
     render(<CardList medications={medications} />);
     const searchInput = screen.getByPlaceholderText("Search...");
