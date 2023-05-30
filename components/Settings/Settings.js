@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "../Login/Login";
 import DarkMode from "../DarkMode/DarkMode";
 import styled from "styled-components";
+import TextSize from "../TextSize/TextSize";
+import useLocalStorageState from "use-local-storage-state";
+
 const SettingsButton = styled.button`
   background-color: transparent;
   border: none;
@@ -54,10 +57,18 @@ export default function Settings({
   medicationPlan,
 }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
-
+  const [textSize, setTextSize] = useLocalStorageState("textSize", {
+    defaultValue: 16,
+  });
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+  const handleTextSizeChange = (event) => {
+    setTextSize(parseInt(event.target.value));
+  };
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${textSize}px`;
+  }, [textSize]);
 
   return (
     <>
@@ -76,8 +87,17 @@ export default function Settings({
           Close
         </SettingsButton>
         <Login isDarkMode={isDarkMode} medicationPlan={medicationPlan} />
-
-        <DarkMode isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <TextSize
+          isDarkMode={isDarkMode}
+          textSize={textSize}
+          handleTextSizeChange={handleTextSizeChange}
+        />
+        <DarkMode
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+          textSize={textSize}
+          handleTextSizeChange={handleTextSizeChange}
+        />
       </SettingsMenu>
     </>
   );

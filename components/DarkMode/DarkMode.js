@@ -7,7 +7,7 @@ import {
   StyledImageMoon,
   Title,
 } from "./DarkMode.styled";
-export default function DarkMode({ isDarkMode, toggleDarkMode }) {
+export default function DarkMode({ isDarkMode, toggleDarkMode, textSize }) {
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("isDarkMode");
@@ -15,6 +15,7 @@ export default function DarkMode({ isDarkMode, toggleDarkMode }) {
       document.body.classList.remove("isDarkMode");
     }
   }, [isDarkMode]);
+  const iconSize = textSize * 1.5;
   return (
     <>
       <ToggleContainer>
@@ -35,13 +36,18 @@ export default function DarkMode({ isDarkMode, toggleDarkMode }) {
               <StyledImageMoon
                 src="/moon.svg"
                 alt="moon"
-                width={25}
-                height={25}
+                width={iconSize}
+                height={iconSize}
               />
             </>
           ) : (
             <>
-              <StyledImageSun src="/sun.svg" alt="sun" width={25} height={25} />
+              <StyledImageSun
+                src="/sun.svg"
+                alt="sun"
+                width={iconSize}
+                height={iconSize}
+              />
             </>
           )}
         </Label>
