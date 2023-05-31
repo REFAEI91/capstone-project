@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import Image from "next/image";
 import { NavBar } from "../Layout/Layout.styled";
 import { useRouter } from "next/router";
-import DarkMode from "../DarkMode/DarkMode";
 export default function Layout({
   children,
   isDarkMode,
@@ -19,7 +18,7 @@ export default function Layout({
         medicationPlan={medicationPlan}
       />
       {children}
-      <NavBar>
+      <NavBar isDarkMode={isDarkMode}>
         <Link href="/">
           <Image
             src="/home.svg"

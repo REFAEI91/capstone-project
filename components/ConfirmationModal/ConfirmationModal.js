@@ -11,7 +11,7 @@ const StyledModal = styled(Modal)`
 `;
 
 const ModalContent = styled.div`
-  background-color: #fff;
+  background-color: ${({ isDarkMode }) => (isDarkMode ? "#43474c" : "#fff")};
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -45,10 +45,15 @@ const ButtonGroup = styled.div`
   }
 `;
 
-export default function ConfirmationModal({ isOpen, onConfirm, onCancel }) {
+export default function ConfirmationModal({
+  isOpen,
+  onConfirm,
+  onCancel,
+  isDarkMode,
+}) {
   return (
     <StyledModal isOpen={isOpen}>
-      <ModalContent>
+      <ModalContent isDarkMode={isDarkMode}>
         <h2>Do you want to save?</h2>
         <ButtonGroup>
           <button onClick={onConfirm}>Yes</button>

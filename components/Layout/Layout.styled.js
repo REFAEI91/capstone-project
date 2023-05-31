@@ -7,14 +7,17 @@ export const NavBar = styled.nav`
   display: flex;
   justify-content: space-around;
   width: 100%;
+  border-top: 0.1px solid black;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px; /* Add this line */
+  background-color: ${({ isDarkMode }) => (isDarkMode ? "#43474c" : "#fff")};
+  padding-top: 2%;
 
   .active {
     padding: 0.2rem;
     margin: 0.1rem;
-    background-color: #cad3db;
-    border: 0.1px solid black;
+    border: 2px groove black;
     border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    transition: all 0.3s ease-out;
+    background-color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "")};
   }
 `;

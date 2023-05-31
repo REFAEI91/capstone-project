@@ -38,7 +38,6 @@ export default function CardList({ medications, toggleBookmark, isDarkMode }) {
     <>
       <SearchBar>
         <Input
-          htmlfor="search"
           type="text"
           value={searchQuery}
           onChange={handleInputChange}

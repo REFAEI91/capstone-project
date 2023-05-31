@@ -89,6 +89,7 @@ export default function App({ Component, pageProps }) {
             setShowConfirmation(false);
           }}
           onCancel={() => setShowConfirmation(false)}
+          isDarkMode={isDarkMode}
         />
       </Layout>
     </SessionProvider>
