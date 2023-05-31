@@ -8,7 +8,7 @@ export const NavBar = styled.nav`
   justify-content: space-around;
   width: 100%;
   border-top: 0.1px solid black;
-  border-top-left-radius: 20px; /* Add this line */
+  border-top-left-radius: 20px;
   border-top-right-radius: 20px; /* Add this line */
   background-color: ${({ isDarkMode }) => (isDarkMode ? "#43474c" : "#fff")};
   padding-top: 2%;

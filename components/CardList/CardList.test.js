@@ -37,6 +37,7 @@ describe("CardList component", () => {
     userEvent.type(searchInput, "anti");
     expect(screen.getByText("Aspirin")).toBeInTheDocument();
   });
+
   test("displays the list of medications correctly, including their name, summary, and bookmark status", () => {
     render(
       <CardList medications={medications} toggleBookmark={mockToggleBookmark} />
