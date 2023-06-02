@@ -10,14 +10,16 @@ export const NavBar = styled.nav`
   border-top: 0.1px solid black;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px; /* Add this line */
-  background-color: ${({ isDarkMode }) => (isDarkMode ? "#43474c" : "#fff")};
+  background-color: ${({ isDarkMode }) =>
+    isDarkMode ? "var(--darkBackgroundColor)" : "var(--backgroundColor)"};
   padding-top: 2%;
 
   .active {
     padding: 0.2rem;
     margin: 0.1rem;
-    border: 2px groove black;
+    border: 1px groove black;
     border-radius: 5px;
-    background-color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "")};
+    background-color: ${({ isDarkMode }) =>
+      isDarkMode ? "#93BFCF" : "#FAF3E0"};
   }
 `;
