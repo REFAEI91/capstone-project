@@ -1,4 +1,6 @@
 # Mediplan App <img src="https://github.com/REFAEI91/capstone-project/assets/56527662/75aa6482-df90-4d9c-979b-f618a4e651cc" alt="logo" width="50">
+[![MEDIPLAN Demo Video](https://img.youtube.com/vi/4DazHuW8tcs/0.jpg)](https://youtu.be/4DazHuW8tcs)
+
 
 
 MEDIPLAN is an application that helps you search for active ingredients and manage your medication plans. With MEDIPLAN, you can easily find information about active ingredients, bookmark them for quick access, and organize your medication plans efficiently.
