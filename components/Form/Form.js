@@ -19,7 +19,7 @@ export default function Plan({
 }) {
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
         <Fieldset>
           <Legend> Medication plan</Legend>
           <ForFieldset>

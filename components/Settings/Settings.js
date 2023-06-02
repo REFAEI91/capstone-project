@@ -29,8 +29,9 @@ const SettingsMenu = styled.div`
   right: 0;
   height: 100vh;
   width: 12rem;
-  border-radius: 10px;
-  background: rgb(255, 255, 255);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: var(--backgroundColor);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-out;
   transform: translateX(100%);
@@ -42,7 +43,7 @@ const SettingsMenu = styled.div`
   ${({ isDarkMode }) =>
     isDarkMode &&
     `
-background-color: #505050;
+background-color: var(--darkBackgroundColor);
     `}
 `;
 

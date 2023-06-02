@@ -11,9 +11,11 @@ export const Container = styled.section`
   border-radius: 5px;
   margin: 1.5em;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  @media (max-width: 375px) {
-    margin: 5%;
-  }
+  ${({ isDarkMode }) =>
+    isDarkMode &&
+    `
+    border: 0.5px groove black;
+  `}
 `;
 export const Title = styled.h2`
   font-size: 1.1rem;
@@ -30,7 +32,6 @@ export const Button = styled.button`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   &:hover {
     cursor: pointer;
-    background-color: #fff8de;
   }
 `;
 export const DetailsList = styled.ul`

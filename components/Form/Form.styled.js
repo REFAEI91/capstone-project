@@ -74,6 +74,6 @@ export const FormButton = styled.button`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   &:hover {
     cursor: pointer;
-    background-color: #fff8de;
+    background-color: #edf6e5;
   }
 `;

@@ -9,7 +9,7 @@ export default function Card({ medication, toggleBookmark, isDarkMode }) {
     setIsExpanded(!isExpanded);
   };
   return (
-    <Container>
+    <Container isDarkMode={isDarkMode}>
       <BookmarkButton
         medication={medication}
         toggleBookmark={toggleBookmark}

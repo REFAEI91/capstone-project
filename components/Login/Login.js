@@ -18,7 +18,9 @@ export default function Login({ isDarkMode, medicationPlan }) {
             alt={session.user.name}
           />
           <List>
-            Your active plans :(<span>{myPlans.length}</span>)
+            <h4>
+              Your active plans : (<span>{myPlans.length}</span>)
+            </h4>
             {myPlans.map((plan) => (
               <li key={plan.id}>
                 {plan.medication_name} bis ({plan.refill})
